@@ -73,14 +73,35 @@
         <button mat-menu-item>Item 1</button>
         <button mat-menu-item>Item 2</button>
       </mat-menu>
+
       <!-- spacer -->
       <div class="spacer"></div>
+
       <!-- profil -->
-      <button mat-icon-button class="profile-icon">
+      <button
+        mat-icon-button
+        [class.profile-positioning]="isHandset$ | async"
+        class="profile-icon"
+      >
         <mat-icon>person</mat-icon>
       </button>
     </mat-toolbar>
     <div class="page">
+      <div class="overskrift">Organisasjoner</div>
+      <!-- <mat-divider></mat-divider> -->
+      <!-- <div class="tabs"></div> -->
+      <!-- <mat-tab-group dynamicHeight>
+        <mat-tab label="Short tab">
+          <div class="example-small-box mat-elevation-z4">
+            Small content
+          </div>
+        </mat-tab>
+        <mat-tab label="Long tab">
+          <div class="example-large-box mat-elevation-z4">
+            Large content
+          </div>
+        </mat-tab>
+      </mat-tab-group> -->
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>

@@ -9,7 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import { MENU_ITEMS, ShellOptions } from './app-shell/shell-options';
+import { APP_SHELL_OPTIONS, AppShellOptions } from './app-shell/shell-options';
 
 export const appShellRoutes: Route[] = [];
 
@@ -29,10 +29,12 @@ export const appShellRoutes: Route[] = [];
   exports: [AppShellComponent],
 })
 export class AppShellModule {
-  static forRoot(options: ShellOptions): ModuleWithProviders<AppShellModule> {
+  static forRoot(
+    options: AppShellOptions
+  ): ModuleWithProviders<AppShellModule> {
     return {
       ngModule: AppShellModule,
-      providers: [{ provide: MENU_ITEMS, useValue: options.menuItems }],
+      providers: [{ provide: APP_SHELL_OPTIONS, useValue: options }],
     };
   }
 }

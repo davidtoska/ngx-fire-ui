@@ -117,45 +117,6 @@ mat-nav-list {
         opacity: 1;
       }
     }
-
-    // // Right pointing arrow
-    // &::after {
-    //   // color: rgba(255, 255, 255, 0.7);
-    //   content: '\25BA';
-    //   left: 50%;
-    //   opacity: 0;
-    //   position: absolute;
-    //   transform: translateY(8px) scale(0.6) translateX(5px);
-    //   transition: transform 0.15s ease-in, opacity 0.075s ease;
-    //   font-family: 'Material Icons Extended';
-    //   font-weight: normal;
-    //   font-style: normal;
-    //   font-size: 24px;
-    //   display: inline-block;
-    //   width: 1em;
-    //   height: 1em;
-    //   line-height: 1;
-    //   text-transform: none;
-    //   letter-spacing: normal;
-    //   word-wrap: normal;
-    //   white-space: nowrap;
-    //   direction: ltr;
-    //   -webkit-font-smoothing: antialiased;
-    //   text-rendering: optimizeLegibility;
-    //   -moz-osx-font-smoothing: grayscale;
-    //   -webkit-font-feature-settings: 'liga';
-    //   -moz-font-feature-settings: 'liga';
-    //   font-feature-settings: 'liga';
-    //   speak: none;
-    //   text-decoration: none;
-    //   user-select: none;
-    // }
-    // &:hover::after {
-    //   opacity: 1;
-    //   transition: opacity 200ms cubic-bezier(0.35, 0, 0.25, 1),
-    //     background-color 200ms cubic-bezier(0.35, 0, 0.25, 1);
-    // }
-    // // end right pointing arrow
   }
 }
 .nav-items-container {
@@ -174,6 +135,7 @@ mat-nav-list {
     border: 2px solid $color-scrollbar-bg;
   }
 }
+
 .root-links {
   background-color: $color-button-on-hover;
   height: 68px;
@@ -190,20 +152,29 @@ mat-nav-list {
 
 mat-sidenav-content {
   mat-toolbar {
-    max-width: calc(100vw - 256px);
+    display: flex;
+    width: 100%;
     height: 48px;
     background-color: transparent;
     position: fixed;
-    padding-right: 24px;
-  }
-  .spacer {
-    flex-grow: 1;
-  }
-  .profile-icon {
-    color: $color-divider;
+
+    button:first-of-type {
+      margin-left: -8px;
+    }
+    .spacer {
+      flex-grow: 1;
+    }
+    .profile-icon {
+      position: absolute;
+      color: $color-divider;
+      top: 0;
+      right: 280px;
+    }
+    .profile-positioning {
+      right: 24px;
+    }
   }
 }
-
 // Skillelinjer
 .divider {
   box-shadow: 0 -1px 0 $color-divider inset;
@@ -211,7 +182,14 @@ mat-sidenav-content {
 .divider-right {
   box-shadow: -1px 0 0 $color-divider inset;
 }
+
 .page {
-  margin-top: 48px;
+  padding-top: 48px;
   min-height: calc(100vh - 48px);
+
+  .overskrift {
+    padding: 18px 24px 8px 24px;
+    font-size: 2em;
+    font-weight: 500;
+  }
 }

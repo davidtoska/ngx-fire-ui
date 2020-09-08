@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-export interface ShellOptions {
+export interface AppShellOptions {
   menuItems: MenuItem[];
   iconUrl?: string;
 }
@@ -12,4 +12,6 @@ export class MenuItem {
   // customIcons = false;
 }
 
-export const MENU_ITEMS = new InjectionToken<MenuItem>('MENU_ITEMS');
+export const APP_SHELL_OPTIONS = new InjectionToken<MenuItem>(
+  '@ngx-app-shell-options__TOKEN'
+);

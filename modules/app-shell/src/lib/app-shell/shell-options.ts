@@ -13,7 +13,7 @@ export interface AppShellOptions {
   homeUrl: string;
   wheelMenu: boolean;
   contextMenu: boolean;
-  contextOverview?: string;
+  contextUrl?: string;
 }
 
 export class MenuItem {

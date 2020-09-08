@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, Type } from '@angular/core';
 
 export const defaulOptions: AppShellOptions = {
   menuItems: [],
@@ -13,6 +13,7 @@ export interface AppShellOptions {
   homeUrl: string;
   wheelMenu: boolean;
   contextMenu: boolean;
+  contextOverview?: string;
 }
 
 export class MenuItem {

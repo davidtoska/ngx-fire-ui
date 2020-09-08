@@ -1,11 +1,20 @@
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
-import { Injectable } from '@angular/core';
+import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { filter, map, startWith, tap } from 'rxjs/operators';
 
-const isCdkScrollable = (el: any): el is CdkScrollable =>
+const isMatSidenavContent = (el: any): el is MatSidenavContent =>
   el instanceof MatSidenavContent;
+
+export class ScrollState {
+  y = 0;
+  isScrolled = false;
+
+  public static default(): ScrollState {
+    return { y: 0, isScrolled: false };
+  }
+}
 
 @Injectable({
   providedIn: 'root',
@@ -13,26 +22,19 @@ const isCdkScrollable = (el: any): el is CdkScrollable =>
 export class ScrollService {
   private readonly scrollDebounceTime = 30;
   private readonly scrolledTreshold = 0;
-  isOnTop$: Observable<boolean>;
-  isScrolled$: Observable<boolean>;
-  scrollY$: Observable<number>;
+  state$: Observable<ScrollState>;
+  state: ScrollState = ScrollState.default();
 
   constructor(private scrollDispatcher: ScrollDispatcher) {
-    console.log(this.scrollDispatcher.scrollContainers);
-    this.scrollY$ = this.scrollDispatcher
-      .scrolled(this.scrollDebounceTime)
-      .pipe(
-        tap((el) => {
-          console.log(el);
-        }),
-        filter(isCdkScrollable),
-        map((el) => el.getElementRef().nativeElement.scrollTop),
-        startWith(0)
-      );
-
-    this.isOnTop$ = this.scrollY$.pipe(
-      map((pos) => pos <= this.scrolledTreshold)
+    this.state$ = this.scrollDispatcher.scrolled(this.scrollDebounceTime).pipe(
+      filter(isMatSidenavContent),
+      map((element) => element.getElementRef().nativeElement.scrollTop),
+      map((y) => ({ y, isScrolled: y > this.scrolledTreshold })),
+      startWith({ y: 0, isScrolled: false })
     );
-    this.isScrolled$ = this.isOnTop$.pipe(map((isOnTop) => !isOnTop));
+
+    this.state$.subscribe((change) => {
+      this.state = { ...change };
+    });
   }
 }

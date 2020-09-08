@@ -1,9 +1,9 @@
-import { Component, AfterViewInit, Inject, OnInit } from '@angular/core';
-
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { MenuItem, APP_SHELL_OPTIONS, AppShellOptions } from './shell-options';
+import { ScrollService } from '../services/scroll.service';
+import { AppShellOptions, APP_SHELL_OPTIONS, MenuItem } from './shell-options';
 
 @Component({
   selector: 'npx-fire-ui-app-shell',
@@ -24,14 +24,20 @@ export class AppShellComponent implements OnInit {
   isScrolled = false;
   constructor(
     private breakpointObserver: BreakpointObserver,
+    private scrollService: ScrollService,
     @Inject(APP_SHELL_OPTIONS) private providedMenuItems: AppShellOptions
   ) {
-    console.log(this.providedMenuItems);
-
     this.menuItems = [...this.providedMenuItems.menuItems];
+    this.scrollService.scrollY$.subscribe((e) => {
+      console.log(e);
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.scrollService.scrollY$.subscribe((n) => console.warn(n));
+    this.scrollService.isOnTop$.subscribe((n) => console.warn(n));
+    this.scrollService.isScrolled$.subscribe((n) => console.warn(n));
+  }
   sideNavToggle() {
     this.sideNavCollapsed = !this.sideNavCollapsed;
   }

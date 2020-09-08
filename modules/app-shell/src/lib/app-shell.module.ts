@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,6 +19,7 @@ export const appShellRoutes: Route[] = [];
     CommonModule,
     RouterModule,
     LayoutModule,
+    ScrollingModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

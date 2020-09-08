@@ -1,1 +1,87 @@
-<h1>Hello from shell</h1>
+<mat-sidenav-container class="sidenav-container">
+  <!-- [class.half-closed]="sideNavCollapsed" -->
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <!-- Logo  -->
+    <mat-toolbar class="divider logo">
+      <img RouterLink="/" src="https://via.placeholder.com/215x36" alt="" />
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <!-- Hjem- og Context meny -->
+      <div class="overview-and-settings divider">
+        <a RouterLink="/" mat-list-item class="hjem-knapp">
+          <mat-icon>home</mat-icon>
+          <span class="nav-label">
+            Hjem
+          </span>
+        </a>
+        <div class="settings-menu">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>settings</mat-icon>
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <!-- Hoved Navigasjons -->
+      <div class="nav-items-container divider">
+        <a *ngFor="let item of menuItems" mat-list-item>
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span class="nav-label">
+            {{ item.label }}
+          </span>
+        </a>
+      </div>
+      <!-- Bunn link -->
+      <div class="root-link">
+        <a mat-list-item>
+          <mat-icon>arrow_left</mat-icon>
+          <span class="nav-label">Logg Ut</span>
+        </a>
+        <!-- <i>&nbsp;</i> -->
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar [class.mat-elevation-z2]="false">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <!-- dropdown menu -->
+      <button mat-button [matMenuTriggerFor]="menu">
+        Project Name <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+      <!-- spacer -->
+      <div class="spacer"></div>
+      <!-- profil -->
+      <button mat-icon-button class="profile-icon">
+        <mat-icon>person</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="page">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

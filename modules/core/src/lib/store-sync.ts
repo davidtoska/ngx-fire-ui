@@ -2,6 +2,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isDate, isPrimitive, PrimitiveType } from './isFunctions';
 
+/**
+ * This store only takes boolean, strings, numbers, and Dates
+ */
 export class StoreSync<T> {
   private readonly _store: BehaviorSubject<T>;
   state$: Readonly<Observable<T>>;

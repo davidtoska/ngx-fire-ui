@@ -9,21 +9,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppShellOptions } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { shellOptions } from './appConfig';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
-  declarations: [AppComponent, OrganisationsPageComponent],
+  declarations: [AppComponent, OrganisationsPageComponent, HomePageComponent],
   imports: [
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
     RouterModule.forRoot(
       [
         {
+          path: 'home',
+          component: HomePageComponent,
+        },
+        {
           path: 'organisations',
           component: OrganisationsPageComponent,
         },
         {
           path: '**',
-          component: OrganisationsPageComponent,
+          redirectTo: 'home',
         },
       ],
       { initialNavigation: 'enabled' }

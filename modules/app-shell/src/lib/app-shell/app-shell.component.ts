@@ -11,6 +11,7 @@ import { AppShellOptions, APP_SHELL_OPTIONS, MenuItem } from './shell-options';
   styleUrls: ['./app-shell.component.scss'],
 })
 export class AppShellComponent implements OnInit {
+  options: AppShellOptions;
   sideNavCollapsed = false;
   menuItems: MenuItem[] = [];
 

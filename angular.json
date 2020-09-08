@@ -167,6 +167,50 @@
           }
         }
       }
+    },
+    "core": {
+      "projectType": "library",
+      "root": "modules/core",
+      "sourceRoot": "modules/core/src",
+      "prefix": "npx-fire-ui",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "modules/core/tsconfig.lib.json",
+            "project": "modules/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "modules/core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "modules/core/tsconfig.lib.json",
+              "modules/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!modules/core/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "modules/core/jest.config.js",
+            "tsConfig": "modules/core/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "modules/core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

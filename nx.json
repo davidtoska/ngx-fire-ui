@@ -31,6 +31,9 @@
     "example-app-e2e": {
       "tags": [],
       "implicitDependencies": ["example-app"]
+    },
+    "core": {
+      "tags": []
     }
   },
   "workspaceLayout": {

@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ngx-fire-ui/app-shell": ["modules/app-shell/src/index.ts"]
+      "@ngx-fire-ui/app-shell": ["modules/app-shell/src/index.ts"],
+      "@ngx-fire-ui/core": ["modules/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

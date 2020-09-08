@@ -14,6 +14,10 @@ const ansatte = {
 };
 
 export const shellOptions: AppShellOptions = {
+  wheelMenu: true,
+  contextMenu: true,
+  homeUrl: 'home',
+  iconUrl: 'assets/tvicon.svg',
   menuItems: [
     organisasjoner,
     ansatte,
@@ -84,5 +88,4 @@ export const shellOptions: AppShellOptions = {
     organisasjoner,
     ansatte,
   ],
-  iconUrl: 'Hello from example-app custom icon url.',
 };

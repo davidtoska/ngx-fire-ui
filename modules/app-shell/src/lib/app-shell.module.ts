@@ -12,7 +12,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { APP_SHELL_OPTIONS, AppShellOptions } from './app-shell/shell-options';
 
-export const appShellRoutes: Route[] = [];
+/**
+ * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
+ */
+// export const appShellRoutes: Route[] = [];
 
 @NgModule({
   imports: [

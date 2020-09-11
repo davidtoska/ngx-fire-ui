@@ -160,6 +160,10 @@ mat-sidenav-content {
 
     button:first-of-type {
       margin-left: -8px;
+
+      mat-icon {
+        transition: color 0s;
+      }
     }
     .spacer {
       flex-grow: 1;

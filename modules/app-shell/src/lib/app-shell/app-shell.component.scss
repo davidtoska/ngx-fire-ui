@@ -1,24 +1,23 @@
+@import '~@angular/material/theming';
+
 // Variables:
 $color-text-default: rgba(255, 255, 255, 0.7);
-$color-nav-bg: #051e34;
-// $color-nav-bg: #1b4e2f;
-$color-button-on-hover: rgba(71, 98, 130, 0.4);
+$color-content-bg: #fafafa;
+$color-navbar: #1a73e8;
 $color-divider: #2a4865;
+$color-nav-bg: #051e34;
+$color-button-on-hover: rgba(71, 98, 130, 0.4);
 $color-scrollbar-main: #8a9bb2;
 $color-scrollbar-bg: #262f3d;
 
 .sidenav-container {
   height: 100vh;
 }
-.sidenav .mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
 
 mat-icon,
 .nav-label,
-.hjem-knapp::after {
+.hjem-knapp::after,
+mat-toolbar {
   transition: all ease-in 0.15s;
 }
 
@@ -27,15 +26,16 @@ mat-icon,
   background-image: url('//www.gstatic.com/mobilesdk/190424_mobilesdk/nav_nachos@2x.png');
   background-repeat: no-repeat;
   background-position: left 0 bottom 0;
-  // background-attachment: fixed;
   background-size: 256px 556px;
   background-color: $color-nav-bg;
-  // height: 100vh;
 
   .mat-toolbar {
     background: inherit;
     padding: 10px 20px;
     height: 48px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
   .logo {
     display: flex;
@@ -166,12 +166,22 @@ mat-sidenav-content {
     }
     .profile-icon {
       position: absolute;
-      color: $color-divider;
-      top: 0;
       right: 280px;
+      color: $color-divider;
     }
     .profile-positioning {
       right: 24px;
+    }
+
+    //Style toolbar while page is scrolled
+    &.while-scrolled {
+      background-color: $color-navbar;
+      color: $color-text-default;
+      @include mat-elevation(2);
+
+      .profile-icon {
+        color: $color-text-default;
+      }
     }
   }
 }
@@ -186,7 +196,7 @@ mat-sidenav-content {
 .page {
   padding-top: 48px;
   min-height: calc(100vh - 48px);
-
+  background-color: $color-content-bg;
   .overskrift {
     padding: 18px 24px 8px 24px;
     font-size: 2em;

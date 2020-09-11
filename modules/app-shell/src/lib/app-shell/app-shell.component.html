@@ -60,7 +60,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar [class.mat-elevation-z2]="false">
+    <mat-toolbar [class.while-scrolled]="ui.state.isScrolled">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -88,20 +88,8 @@
         <mat-icon>person</mat-icon>
       </button>
     </mat-toolbar>
+
     <div class="page">
-      <div class="overskrift">Organisasjoner</div>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>

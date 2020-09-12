@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
-import { AppShellModule } from '@ngx-fire-ui/app-shell';
+import { AppShellComponent, AppShellModule } from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppShellOptions, appShellRoutes } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
@@ -19,15 +19,20 @@ import { HomePageComponent } from './home-page/home-page.component';
     RouterModule.forRoot(
       [
         {
-          path: 'home',
-          component: HomePageComponent,
+          path: '',
+          component: AppShellComponent,
+          children: [
+            {
+              path: 'home',
+              component: HomePageComponent,
+            },
+            {
+              path: 'organisations',
+              component: OrganisationsPageComponent,
+            },
+            ...appShellRoutes,
+          ],
         },
-        {
-          path: 'organisations',
-          component: OrganisationsPageComponent,
-          outlet: 'fullscreen',
-        },
-        ...appShellRoutes,
         {
           path: '**',
           redirectTo: 'home',

@@ -66,9 +66,8 @@ export class AppShellComponent implements OnInit {
   }
   openDialog() {
     const dialogRef = this.dialog.open(NewContextModalComponent, {
-      width: '0',
-      height: '0',
       panelClass: ['new-context-modal'],
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

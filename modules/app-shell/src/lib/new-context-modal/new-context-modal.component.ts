@@ -22,12 +22,14 @@ export class NewContextModalComponent implements OnInit {
   }
   closeDialogHandler() {
     this.hideModal = true;
+    console.log(this.handset$);
     window.setTimeout(() => this.dialogClose(), 200);
   }
 
   dialogClose() {
     this.dialogRef.close();
     this.hideModal = false;
+    console.log(this.handset$);
   }
   ngOnInit(): void {}
 }

@@ -1,21 +1,13 @@
 $color-navbar: #1a73e8;
 
-:host {
-  transform: all 2s;
-}
 .sidenav {
   width: 100vw;
   top: 0px;
   left: 0;
   bottom: 0px;
-  //   transform: none;
   visibility: visible;
   transform: translateX(100vw);
   transition: all 0.2s;
-  //   background-image: url('//www.gstatic.com/mobilesdk/190424_mobilesdk/nav_nachos@2x.png');
-  //   background-repeat: no-repeat;
-  //   background-position: left 0 bottom 0;
-  //   background-size: 256px 556px;
   background-color: #f6f7f9;
 
   &.hide {
@@ -47,17 +39,11 @@ $color-navbar: #1a73e8;
 }
 .create-context-header {
   align-items: center;
-  //   background-color: #f6f7f9;
   display: inline-flex;
-  //   flex-flow: nowrap;
-  //   justify-content: flex-start;
   min-height: 96px;
   padding-left: 84px;
   padding-top: 56px;
   position: absolute;
-  //   top: 0;
-  //   width: -webkit-fill-available;
-  //   z-index: 50;
 
   button {
     margin-right: 24px;
@@ -71,22 +57,16 @@ $color-navbar: #1a73e8;
 }
 
 .create-context-sidebar {
-  //   background-attachment: scroll;
   background-color: $color-navbar;
   background-image: url(//www.gstatic.com/mobilesdk/180313_mobilesdk/grain@2x.png);
-  //   background-repeat: no-repeat;
-  //   background-position: right bottom;
   background-size: 100% 100%;
   flex: 0 0 320px;
   height: 100%;
   position: absolute;
   right: 0;
-  //   top: 0;
   width: 320px;
-  //   z-index: 51;
 }
 .create-context-page {
-  //   flex: 1;
   left: 0;
   right: 0;
   margin-left: 24px;

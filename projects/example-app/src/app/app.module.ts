@@ -8,11 +8,12 @@ import { AppShellComponent, AppShellModule } from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppShellOptions, appShellRoutes } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
-import { shellOptions } from './appConfig';
+import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
+import { EmployeesPageComponent } from './employees-page/employees-page.component';
 
 @NgModule({
-  declarations: [AppComponent, OrganisationsPageComponent, HomePageComponent],
+  declarations: [AppComponent, OrganisationsPageComponent, HomePageComponent, EmployeesPageComponent],
   imports: [
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
@@ -23,12 +24,16 @@ import { HomePageComponent } from './home-page/home-page.component';
           component: AppShellComponent,
           children: [
             {
-              path: 'home',
+              path: URLS.home,
               component: HomePageComponent,
             },
             {
-              path: 'organisations',
+              path: URLS.organisations,
               component: OrganisationsPageComponent,
+            },
+            {
+              path: URLS.employees,
+              component: EmployeesPageComponent,
             },
             ...appShellRoutes,
           ],

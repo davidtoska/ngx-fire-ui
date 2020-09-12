@@ -18,6 +18,7 @@ import {
   MenuItem,
 } from './shell-options';
 import { NewContextModalComponent } from '../new-context-modal/new-context-modal.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'npx-fire-ui-app-shell',
@@ -31,6 +32,8 @@ export class AppShellComponent implements OnInit {
     isScrolled: false,
     isHandset: false,
   });
+
+  isLoggedIn = false;
 
   options: AppShellOptions = defaulOptions;
   menuItems: MenuItem[] = [];
@@ -47,14 +50,19 @@ export class AppShellComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private scrollService: ScrollService,
     private ref: ChangeDetectorRef,
-    @Inject(APP_SHELL_OPTIONS) private providedMenuItems: AppShellOptions
+    private readonly authService: AuthService,
+    @Inject(APP_SHELL_OPTIONS) private appOptions: AppShellOptions
   ) {
-    this.menuItems = [...this.providedMenuItems.menuItems];
+    this.menuItems = [...this.appOptions.menuItems];
     this.ui.state$.subscribe((state) => {
       console.log(state);
     });
     this.isHandset$.subscribe((isHandset) => {
       this.ui.update({ isHandset });
+    });
+    this.authService.isLoggedId$.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+      console.log(this.isLoggedIn);
     });
   }
 
@@ -75,7 +83,11 @@ export class AppShellComponent implements OnInit {
     });
   }
   onLogout() {
-    console.log('Logged out');
+    this.authService.logOut();
+  }
+
+  onLogIn() {
+    this.authService.logIn();
   }
 
   sideNavToggle() {

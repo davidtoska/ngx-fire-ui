@@ -7,7 +7,7 @@ import { isDate, isPrimitive, PrimitiveType } from './isFunctions';
  */
 export class StoreSync<T> {
   private readonly _store: BehaviorSubject<T>;
-  state$: Readonly<Observable<T>>;
+  private _state$: Readonly<Observable<T>>;
 
   constructor(initialState: T) {
     Object.values(initialState).forEach((value) => {
@@ -19,7 +19,7 @@ export class StoreSync<T> {
       }
     });
     this._store = new BehaviorSubject<T>(initialState);
-    this.state$ = this._store.asObservable();
+    this._state$ = this._store.asObservable();
   }
 
   update(partialState: Readonly<Partial<T>>) {
@@ -33,11 +33,15 @@ export class StoreSync<T> {
   }
 
   select$(key: keyof T): Readonly<Observable<T[keyof T]>> {
-    return this.state$.pipe(map((s) => s[key]));
+    return this._state$.pipe(map((s) => s[key]));
   }
 
   select(key: keyof T): Readonly<T[keyof T]> {
     return this._store.value[key];
+  }
+
+  get state$() {
+    return this._state$;
   }
 }
 

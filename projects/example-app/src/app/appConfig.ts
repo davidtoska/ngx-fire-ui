@@ -2,13 +2,19 @@
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { AppShellOptions } from '@ngx-fire-ui/app-shell';
 
+export const URLS = {
+  home: 'home',
+  organisations: 'organisations',
+  employees: 'employees'
+}
+
 const organisasjoner = {
-  route: 'organisations',
+  route: URLS.organisations,
   label: 'Organisasjoner',
   icon: 'account_balance',
 };
 const ansatte = {
-  route: 'employees',
+  route: URLS.employees,
   label: 'Ansatte',
   icon: 'people',
 };
@@ -16,13 +22,9 @@ const ansatte = {
 export const shellOptions: AppShellOptions = {
   wheelMenu: true,
   contextMenu: true,
-  homeUrl: 'home',
+  homeUrl: URLS.home,
   iconUrl: 'assets/tvicon.svg',
   menuItems: [
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
     organisasjoner,
     ansatte,
     organisasjoner,

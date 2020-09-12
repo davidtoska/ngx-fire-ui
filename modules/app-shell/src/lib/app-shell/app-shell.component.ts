@@ -51,9 +51,9 @@ export class AppShellComponent implements OnInit {
     private scrollService: ScrollService,
     private ref: ChangeDetectorRef,
     private readonly authService: AuthService,
-    @Inject(APP_SHELL_OPTIONS) private providedMenuItems: AppShellOptions
+    @Inject(APP_SHELL_OPTIONS) private appOptions: AppShellOptions
   ) {
-    this.menuItems = [...this.providedMenuItems.menuItems];
+    this.menuItems = [...this.appOptions.menuItems];
     this.ui.state$.subscribe((state) => {
       console.log(state);
     });

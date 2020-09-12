@@ -10,7 +10,6 @@ export class AuthService {
   private state$ = new StoreSync({
     uid: '',
     isLoggedin: false,
-    claims: { ['isAdmin']: false },
   });
   readonly uid$: Observable<string | null>;
   readonly isLoggedId$: Observable<boolean>;
@@ -23,15 +22,13 @@ export class AuthService {
     this.state$.update({
       uid: 'test-uid',
       isLoggedin: true,
-      claims: { ['isAdmin']: true },
     });
   }
 
   logOut() {
     this.state$.update({
-      uid: undefined,
+      uid: '',
       isLoggedin: false,
-      claims: { ['isAdmin']: false },
     });
   }
 }

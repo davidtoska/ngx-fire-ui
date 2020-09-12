@@ -50,9 +50,13 @@
       </div>
       <!-- Bunn link -->
       <div class="root-link">
-        <a mat-list-item (click)="onLogout()">
+        <a mat-list-item *ngIf="isLoggedIn" (click)="onLogout()">
           <mat-icon>arrow_left</mat-icon>
-          <span class="nav-label">Logg Ut</span>
+          <span class="nav-label">Logg ut</span>
+        </a>
+        <a mat-list-item *ngIf="!isLoggedIn" (click)="onLogIn()">
+          <mat-icon>arrow_left</mat-icon>
+          <span class="nav-label">Logg inn</span>
         </a>
         <!-- <i>&nbsp;</i> -->
       </div>
@@ -117,7 +121,10 @@
 
 <mat-menu #profileMenu="matMenu">
   <button mat-menu-item>Innstillinger</button>
-  <button mat-menu-item (click)="onLogout()">Logg ut</button>
+  <button *ngIf="isLoggedIn" mat-menu-item (click)="onLogout()">Logg ut</button>
+  <button *ngIf="!isLoggedIn" mat-menu-item (click)="onLogIn()">
+    Logg inn
+  </button>
 </mat-menu>
 
 <!-- <mat-divider></mat-divider> -->

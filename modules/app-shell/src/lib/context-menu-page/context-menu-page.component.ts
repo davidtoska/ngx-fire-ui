@@ -6,6 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./context-menu-page.component.scss'],
 })
 export class ContextMenuPageComponent implements OnInit {
+  projects = [
+    {
+      name: 'Lyngbøtunet Sykehjem',
+      description: 'Aldershjem og sykehjem på laksevåg',
+    },
+    {
+      name: 'Lyngbøtunet Sykehjem',
+    },
+    {
+      name: 'Lyngbøtunet Sykehjem',
+    },
+    {
+      name: 'Lyngbøtunet Sykehjem',
+      description: 'Aldershjem og sykehjem på laksevåg',
+    },
+    {
+      name: 'Lyngbøtunet Sykehjem',
+      description: 'Aldershjem og sykehjem på laksevåg',
+    },
+  ];
+  handset$ = false;
   constructor() {}
 
   ngOnInit(): void {}

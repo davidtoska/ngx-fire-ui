@@ -11,6 +11,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { APP_SHELL_OPTIONS, AppShellOptions } from './app-shell/shell-options';
+import { NewContextModalComponent } from './new-context-modal/new-context-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
@@ -29,9 +33,13 @@ import { APP_SHELL_OPTIONS, AppShellOptions } from './app-shell/shell-options';
     MatIconModule,
     MatListModule,
     MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
-  declarations: [AppShellComponent],
+  declarations: [AppShellComponent, NewContextModalComponent],
   exports: [AppShellComponent],
+  entryComponents: [NewContextModalComponent],
 })
 export class AppShellModule {
   static forRoot(

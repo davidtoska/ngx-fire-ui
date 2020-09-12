@@ -97,7 +97,7 @@
 
 <mat-menu #contextMenu="matMenu" [overlapTrigger]="true" [xPosition]="'after'">
   <button mat-menu-item>Alle kontekster</button>
-  <button mat-menu-item>Legg til context</button>
+  <button mat-menu-item (click)="openDialog()">Legg til context</button>
   <mat-divider class="contextMenu"></mat-divider>
   <button mat-menu-item>Context 1</button>
   <button mat-menu-item>Context 2</button>

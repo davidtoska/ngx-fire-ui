@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppShellModule } from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppShellOptions } from '@ngx-fire-ui/app-shell';
+import { AppShellOptions, appShellRoutes } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { shellOptions } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -25,7 +25,9 @@ import { HomePageComponent } from './home-page/home-page.component';
         {
           path: 'organisations',
           component: OrganisationsPageComponent,
+          outlet: 'fullscreen',
         },
+        ...appShellRoutes,
         {
           path: '**',
           redirectTo: 'home',

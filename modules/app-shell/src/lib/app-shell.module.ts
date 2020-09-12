@@ -23,12 +23,13 @@ import { MatInputModule } from '@angular/material/input';
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
-export const appShellRoutes: Route[] = [
-  {
+export const ROUTES = {
+  login: {
     path: 'login',
     component: LoginPageComponent,
   },
-];
+};
+export const appShellRoutes: Route[] = [];
 
 @NgModule({
   imports: [

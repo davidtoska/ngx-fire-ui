@@ -90,6 +90,8 @@
     </mat-toolbar>
 
     <div class="page">
+      <div class="overskrift">Organisasjoner</div>
+      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>

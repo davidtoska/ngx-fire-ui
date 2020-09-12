@@ -60,7 +60,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar [class.mat-elevation-z2]="false">
+    <mat-toolbar [class.while-scrolled]="ui.state.isScrolled">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -88,6 +88,7 @@
         <mat-icon>person</mat-icon>
       </button>
     </mat-toolbar>
+
     <div class="page">
       <div class="overskrift">Organisasjoner</div>
       <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
@@ -98,7 +99,7 @@
 
 <mat-menu #contextMenu="matMenu" [overlapTrigger]="true" [xPosition]="'after'">
   <button mat-menu-item>Alle kontekster</button>
-  <button mat-menu-item>Legg til context</button>
+  <button mat-menu-item (click)="openDialog()">Legg til context</button>
   <mat-divider class="contextMenu"></mat-divider>
   <button mat-menu-item>Context 1</button>
   <button mat-menu-item>Context 2</button>

@@ -1,7 +1,8 @@
-<style>
-  :host {
-    height: 3000px;
-    background-color: aquamarine;
-  }
-</style>
+<ng-container *ngIf="!initialized">
+  <div class="header"></div>
+</ng-container>
+<ng-container *ngIf="initialized">
+  <div class="overskrift">Organisasjoner</div>
+</ng-container>
+
 <p>organisations-page works!</p>

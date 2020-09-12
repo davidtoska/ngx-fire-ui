@@ -15,6 +15,10 @@ import { LoginComponent } from './login/login.component';
 import { FullscreenPageComponent } from './fullscreen-page/fullscreen-page.component';
 import { ContextMenuPageComponent } from './context-menu-page/context-menu-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { NewContextModalComponent } from './new-context-modal/new-context-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
@@ -38,6 +42,9 @@ export const appShellRoutes: Route[] = [
     MatIconModule,
     MatListModule,
     MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   declarations: [
     AppShellComponent,
@@ -45,8 +52,10 @@ export const appShellRoutes: Route[] = [
     FullscreenPageComponent,
     ContextMenuPageComponent,
     LoginPageComponent,
+    NewContextModalComponent,
   ],
   exports: [AppShellComponent, LoginComponent],
+  entryComponents: [NewContextModalComponent],
 })
 export class AppShellModule {
   static forRoot(

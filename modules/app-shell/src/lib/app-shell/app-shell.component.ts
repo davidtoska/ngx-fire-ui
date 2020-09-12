@@ -6,6 +6,7 @@ import {
   Inject,
   OnInit,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { StoreSync } from '@ngx-fire-ui/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -16,6 +17,7 @@ import {
   defaulOptions,
   MenuItem,
 } from './shell-options';
+import { NewContextModalComponent } from '../new-context-modal/new-context-modal.component';
 
 @Component({
   selector: 'npx-fire-ui-app-shell',
@@ -41,6 +43,7 @@ export class AppShellComponent implements OnInit {
     );
 
   constructor(
+    public dialog: MatDialog,
     private breakpointObserver: BreakpointObserver,
     private scrollService: ScrollService,
     private ref: ChangeDetectorRef,
@@ -61,7 +64,17 @@ export class AppShellComponent implements OnInit {
       this.ref.detectChanges();
     });
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(NewContextModalComponent, {
+      width: '0',
+      height: '0',
+      panelClass: ['new-context-modal'],
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   onLogout() {
     console.log('Logged out');
   }

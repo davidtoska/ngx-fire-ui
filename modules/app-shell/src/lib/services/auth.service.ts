@@ -10,9 +10,11 @@ interface AuthState {
   providedIn: 'root',
 })
 export class AuthService {
-
-  private readonly store = new BehaviorSubject<AuthState>({uid: "", isLoggedIn: false});
-  readonly state$ = this.store.asObservable()
+  private readonly store = new BehaviorSubject<AuthState>({
+    uid: '',
+    isLoggedIn: false,
+  });
+  readonly state$ = this.store.asObservable();
   readonly uid$: Observable<string | null>;
   readonly isLoggedId$: Observable<boolean>;
   constructor() {

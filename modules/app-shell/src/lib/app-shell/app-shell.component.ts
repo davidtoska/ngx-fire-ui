@@ -3,7 +3,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ComponentRef,
   Inject,
+  Injector,
   OnInit,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,6 +23,7 @@ import { NewContextModalComponent } from '../new-context-modal/new-context-modal
 import { AuthService } from '../services/auth.service';
 import { LayoutService } from '../services/layout.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BasePage } from '../base-page.component';
 
 @Component({
   selector: 'npx-fire-ui-app-shell',
@@ -39,13 +42,6 @@ export class AppShellComponent implements OnInit {
 
   options: AppShellOptions = defaulOptions;
   menuItems: MenuItem[] = [];
-
-  // isHandset$: Observable<boolean> = this.breakpointObserver
-  //   .observe(Breakpoints.Handset)
-  //   .pipe(
-  //     map((result) => result.matches),
-  //     shareReplay()
-  //   );
 
   constructor(
     public dialog: MatDialog,
@@ -98,7 +94,8 @@ export class AppShellComponent implements OnInit {
     this.ui.setState({ sideNavCollapsed });
   }
 
-  routerOutletsEvents(ev: any) {
-    console.log(ev);
+  routerOutletsEvents(ev: BasePage) {
+    console.log(ev.pageId)
+    console.log(ev.getPageid());
   }
 }

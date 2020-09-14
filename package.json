@@ -11,6 +11,7 @@
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "build:app-shell": "ng build app-shell --prod",
+    "build:core": "ng build core --prod",
     "publish": "ts-node tools/publish.ts",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",

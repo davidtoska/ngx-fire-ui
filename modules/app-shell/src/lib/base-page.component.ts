@@ -1,35 +1,46 @@
 import {
   ChangeDetectorRef,
   Component,
-
   Directive,
-
-  OnInit
+  Injector,
+  OnInit,
 } from '@angular/core';
 import { StoreSync } from '@ngx-fire-ui/core';
+import { AuthService } from './services/auth.service';
 
-// @Directive()
+type UiState = { [key: string]: boolean | string | number };
 
-export class BasePage implements OnInit {
-  ui = new StoreSync({
-    sideNavCollapsed: false,
-    isScrolled: false,
-    isHandset: false,
-  });
+@Directive()
+export abstract class BasePage implements OnInit {
+  abstract pageId: string;
+  // protected abstract readonly initialUiState: {[key: string]: boolean | string | number}
+  // protected initialUiState: T;
+  protected abstract ui: StoreSync<UiState>;
+  protected authSer: AuthService;
 
   constructor(
-    // private layout: LayoutService,
-    // private scrollService: ScrollService,
-    private ref: ChangeDetectorRef,
-    // private readonly authService: AuthService,
-  ) {
-
+    protected readonly injector: Injector,
+  ) // private scrollService: ScrollService,
+  // private ref: ChangeDetectorRef,
+  // private readonly authService: AuthService,
+  {
+    // this.uiBase = new StoreSync(uiState)
+    // this.uiBase = new StoreSync(uiState)
+    this.authSer = this.injector.get(AuthService);
   }
 
-  runOnInit(){
-    console.log("[BASE-PAGE] runOnInit...")
+  runOnInit() {
+    // this.uiBase = new StoreSync(this.initialUiState)
+    console.log('[BASE-PAGE] runOnInit...');
+    console.log(this.injector);
+    console.log(this.authSer);
   }
 
   ngOnInit(): void {
+    console.log('[BASE-PAGE] OnInit...');
+  }
+
+  getPageid() {
+    return this.pageId;
   }
 }

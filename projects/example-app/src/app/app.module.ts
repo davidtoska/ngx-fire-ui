@@ -13,7 +13,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
 
 @NgModule({
-  declarations: [AppComponent, OrganisationsPageComponent, HomePageComponent, EmployeesPageComponent],
+  declarations: [
+    AppComponent,
+    OrganisationsPageComponent,
+    HomePageComponent,
+    EmployeesPageComponent,
+  ],
   imports: [
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
@@ -26,14 +31,17 @@ import { EmployeesPageComponent } from './employees-page/employees-page.componen
             {
               path: URLS.home,
               component: HomePageComponent,
+              data: { title: 'Home' },
             },
             {
               path: URLS.organisations,
               component: OrganisationsPageComponent,
+              data: { title: 'Organisations' },
             },
             {
               path: URLS.employees,
               component: EmployeesPageComponent,
+              data: { title: 'Employees' },
             },
             ...appShellRoutes,
           ],

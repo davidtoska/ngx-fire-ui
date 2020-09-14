@@ -19,6 +19,8 @@ import {
 } from './shell-options';
 import { NewContextModalComponent } from '../new-context-modal/new-context-modal.component';
 import { AuthService } from '../services/auth.service';
+import { LayoutService } from '../services/layout.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'npx-fire-ui-app-shell',
@@ -38,28 +40,32 @@ export class AppShellComponent implements OnInit {
   options: AppShellOptions = defaulOptions;
   menuItems: MenuItem[] = [];
 
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
+  // isHandset$: Observable<boolean> = this.breakpointObserver
+  //   .observe(Breakpoints.Handset)
+  //   .pipe(
+  //     map((result) => result.matches),
+  //     shareReplay()
+  //   );
 
   constructor(
     public dialog: MatDialog,
-    private breakpointObserver: BreakpointObserver,
+    private readonly route: ActivatedRoute,
+    private layout: LayoutService,
     private scrollService: ScrollService,
     private ref: ChangeDetectorRef,
     private readonly authService: AuthService,
     @Inject(APP_SHELL_OPTIONS) private appOptions: AppShellOptions
   ) {
+    const data = this.route.routeConfig?.data;
+    this.route.data.subscribe((d) => console.log(d));
     this.menuItems = [...this.appOptions.menuItems];
     this.ui.state$.subscribe((state) => {
       console.log(state);
     });
-    this.isHandset$.subscribe((isHandset) => {
+    this.layout.isHandset$.subscribe((isHandset) => {
       this.ui.update({ isHandset });
     });
+
     this.authService.isLoggedId$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
       console.log(this.isLoggedIn);
@@ -93,5 +99,9 @@ export class AppShellComponent implements OnInit {
   sideNavToggle() {
     const sideNavCollapsed = !this.ui.select('sideNavCollapsed');
     this.ui.update({ sideNavCollapsed });
+  }
+
+  routerOutletsEvents(ev: any) {
+    console.log(ev);
   }
 }

@@ -5,8 +5,8 @@ import { AppShellOptions } from '@ngx-fire-ui/app-shell';
 export const URLS = {
   home: 'home',
   organisations: 'organisations',
-  employees: 'employees'
-}
+  employees: 'employees',
+};
 
 const organisasjoner = {
   route: URLS.organisations,

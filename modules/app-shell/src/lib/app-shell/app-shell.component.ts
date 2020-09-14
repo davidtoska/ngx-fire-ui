@@ -59,11 +59,8 @@ export class AppShellComponent implements OnInit {
     const data = this.route.routeConfig?.data;
     this.route.data.subscribe((d) => console.log(d));
     this.menuItems = [...this.appOptions.menuItems];
-    this.ui.state$.subscribe((state) => {
-      console.log(state);
-    });
     this.layout.isHandset$.subscribe((isHandset) => {
-      this.ui.update({ isHandset });
+      this.ui.setState({ isHandset });
     });
 
     this.authService.isLoggedId$.subscribe((isLoggedIn) => {
@@ -74,7 +71,7 @@ export class AppShellComponent implements OnInit {
 
   ngOnInit(): void {
     this.scrollService.state$.subscribe((state) => {
-      this.ui.update({ isScrolled: state.isScrolled });
+      this.ui.setState({ isScrolled: state.isScrolled });
       this.ref.detectChanges();
     });
   }
@@ -97,8 +94,8 @@ export class AppShellComponent implements OnInit {
   }
 
   sideNavToggle() {
-    const sideNavCollapsed = !this.ui.select('sideNavCollapsed');
-    this.ui.update({ sideNavCollapsed });
+    const sideNavCollapsed = !this.ui.state.sideNavCollapsed;
+    this.ui.setState({ sideNavCollapsed });
   }
 
   routerOutletsEvents(ev: any) {

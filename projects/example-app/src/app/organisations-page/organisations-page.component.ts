@@ -17,6 +17,6 @@ export class OrganisationsPageComponent extends BasePage implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.TAG)
+    console.log(this.TAG);
   }
 }

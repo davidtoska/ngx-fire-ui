@@ -25,8 +25,7 @@ export abstract class BasePage implements OnInit, OnDestroy {
   protected readonly subs = new SubSink();
 
   constructor(
-    protected readonly injector: Injector, // private scrollService: ScrollService, // private ref: ChangeDetectorRef, // private readonly authService: AuthService,
-
+    protected readonly injector: Injector // private scrollService: ScrollService, // private ref: ChangeDetectorRef, // private readonly authService: AuthService,
   ) {
     // this.uiBase = new StoreSync(uiState)
     // this.uiBase = new StoreSync(uiState)
@@ -44,15 +43,15 @@ export abstract class BasePage implements OnInit, OnDestroy {
       })
     );
 
-    this.subs.add(this.route.paramMap.subscribe(p => {
-      console.log(this.TAG, p);
-      console.log(p)
-    }))
-    this.route.queryParams.subscribe(q => {
+    this.subs.add(
+      this.route.paramMap.subscribe((p) => {
+        console.log(this.TAG, p);
+        console.log(p);
+      })
+    );
+    this.route.queryParams.subscribe((q) => {
       console.log(this.TAG, q);
-
-    })
-
+    });
   }
 
   ngOnInit(): void {

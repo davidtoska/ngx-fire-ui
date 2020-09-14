@@ -32,7 +32,7 @@ import { BasePage } from '../base-page.component';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppShellComponent implements OnInit {
-  currentPageId = "";
+  currentPageId = '';
   ui = new StoreSync({
     sideNavCollapsed: false,
     isScrolled: false,
@@ -99,7 +99,7 @@ export class AppShellComponent implements OnInit {
     if (!ev.pageId) {
       console.error('Every page needs to extend base-page');
     }
-    this.currentPageId = ev.pageId ?? "Set pageId"
+    this.currentPageId = ev.pageId ?? 'Set pageId';
     console.log(ev.pageId);
     console.log(ev);
   }

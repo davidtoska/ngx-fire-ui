@@ -19,11 +19,8 @@ export abstract class BasePage implements OnInit {
   protected authSer: AuthService;
 
   constructor(
-    protected readonly injector: Injector,
-  ) // private scrollService: ScrollService,
-  // private ref: ChangeDetectorRef,
-  // private readonly authService: AuthService,
-  {
+    protected readonly injector: Injector // private scrollService: ScrollService, // private ref: ChangeDetectorRef, // private readonly authService: AuthService,
+  ) {
     // this.uiBase = new StoreSync(uiState)
     // this.uiBase = new StoreSync(uiState)
     this.authSer = this.injector.get(AuthService);

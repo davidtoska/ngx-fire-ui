@@ -95,7 +95,9 @@ export class AppShellComponent implements OnInit {
   }
 
   routerOutletsEvents(ev: BasePage) {
-    console.log(ev.pageId)
-    console.log(ev.getPageid());
+    if (!ev.pageId) {
+      console.error('Every page needs to extend base-page');
+    }
+    console.log(ev.pageId);
   }
 }

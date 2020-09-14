@@ -39,8 +39,8 @@ export class SubSink {
 
   unsubscribe() {
     this._subs.forEach((sub) => {
-      if(isFunction(sub?.unsubscribe)) {
-        sub.unsubscribe()
+      if (isFunction(sub?.unsubscribe)) {
+        sub.unsubscribe();
       }
       this._subs = [];
     });

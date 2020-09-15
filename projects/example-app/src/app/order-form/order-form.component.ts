@@ -16,7 +16,6 @@ export class OrderFormComponent extends BasePage implements OnInit {
   }
 
   ngOnInit(): void {
-    // super.ngOnInit();
-    super.runOnInit();
+    super.ngOnInit();
   }
 }

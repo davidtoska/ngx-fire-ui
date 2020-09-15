@@ -46,7 +46,6 @@ export class AppShellComponent implements OnInit {
   });
 
   isLoggedIn = false;
-
   options: AppShellOptions = defaulOptions;
   menuItems: MenuItem[] = [];
 
@@ -59,8 +58,7 @@ export class AppShellComponent implements OnInit {
     private readonly authService: AuthService,
     @Inject(APP_SHELL_OPTIONS) private appOptions: AppShellOptions
   ) {
-    const data = this.route.routeConfig?.data;
-    this.route.data.subscribe((d) => console.log(d));
+    // this.route.data.subscribe((d) => console.log(d));
     this.menuItems = [...this.appOptions.menuItems];
     this.layout.isHandset$.subscribe((isHandset) => {
       const a = isHandset;
@@ -70,7 +68,6 @@ export class AppShellComponent implements OnInit {
 
     this.authService.isLoggedId$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
-      console.log(this.isLoggedIn);
     });
   }
 
@@ -104,12 +101,21 @@ export class AppShellComponent implements OnInit {
   }
 
   routerOutletsEvents(ev: BasePage) {
+    // console.log(ev);
     if (!ev.pageId) {
       console.error('Every page needs to extend base-page');
-      console.error(ev);
     }
+
+    // Maybe use a message-buss for shell-page communisations??
+    ev.getPageLifecycleSubscriptionForAppShell().subscribe((lifecy) => {
+      console.log(lifecy);
+    });
+
+    if (!ev.__is__initialized) {
+      console.log(ev.__is__initialized);
+      // console.error('page needs to be initialized: ' + ev.__is__initialized);
+    }
+
     this.currentPageId = ev.pageId ?? 'Set pageId';
-    console.log(ev.pageId);
-    console.log(ev);
   }
 }

@@ -16,6 +16,7 @@ export class EmployeesPageComponent extends BasePage implements OnInit {
   }
 
   ngOnInit(): void {
+    super.ngOnInit();
     console.log('[Employees Page]' + this.ui.state.isselected);
   }
 }

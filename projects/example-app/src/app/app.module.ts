@@ -4,7 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
-import { AppShellComponent, AppShellModule } from '@ngx-fire-ui/app-shell';
+import {
+  AppShellComponent,
+  AppShellModule,
+  DynamicFormModule,
+} from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppShellOptions, appShellRoutes } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
@@ -24,6 +28,7 @@ import { OrderFormComponent } from './order-form/order-form.component';
   imports: [
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
+    DynamicFormModule,
     RouterModule.forRoot(
       [
         {

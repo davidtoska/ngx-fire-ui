@@ -11,12 +11,10 @@ import { StoreSync, SubSink } from '@ngx-fire-ui/core';
 import { AuthService } from './services/auth.service';
 import { LayoutService } from './services/layout.service';
 
-type UiState = { [key: string]: boolean | string | number };
-
 @Directive()
 export abstract class BasePage implements OnInit, OnDestroy {
   public abstract pageId: string;
-  public abstract readonly ui: StoreSync<UiState>;
+  public abstract readonly ui: StoreSync;
   public readonly layout = new StoreSync({ isHandset: false });
   protected authService: AuthService;
   private layoutService: LayoutService;

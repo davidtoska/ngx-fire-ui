@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'npx-fire-ui-context-menu-page',
+  selector: 'ngx-fire-ui-context-menu-page',
   templateUrl: './context-menu-page.component.html',
   styleUrls: ['./context-menu-page.component.scss'],
 })

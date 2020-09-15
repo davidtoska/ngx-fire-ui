@@ -1,10 +1,9 @@
 import { isPrimitive } from './isFunctions';
-import { PrimitiveType } from './types';
 
 /**
  * This store only takes boolean, strings, numbers
  */
-export class StoreSync<T> {
+export class StoreSync<T = any> {
   state: Readonly<T>;
 
   constructor(initialState: T) {

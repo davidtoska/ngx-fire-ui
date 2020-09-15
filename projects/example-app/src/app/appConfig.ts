@@ -1,11 +1,12 @@
 // import { AppShellOptions } from 'modules/app-shell/src/lib/app-shell/shell-options';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
-import { AppShellOptions } from '@ngx-fire-ui/app-shell';
+import { AppShellOptions, MenuItem } from '@ngx-fire-ui/app-shell';
 
 export const URLS = {
   home: 'home',
   organisations: 'organisations',
   employees: 'employees',
+  orders: 'orders',
 };
 
 const organisasjoner = {
@@ -19,6 +20,12 @@ const ansatte = {
   icon: 'people',
 };
 
+const orders: MenuItem = {
+  route: URLS.orders,
+  label: 'Orders',
+  icon: 'shopping_cart',
+};
+
 export const shellOptions: AppShellOptions = {
   wheelMenu: true,
   contextMenu: true,
@@ -27,13 +34,13 @@ export const shellOptions: AppShellOptions = {
   menuItems: [
     organisasjoner,
     ansatte,
-    organisasjoner,
+    orders,
     ansatte,
     organisasjoner,
+    orders,
     ansatte,
     organisasjoner,
-    ansatte,
-    organisasjoner,
+    orders,
     ansatte,
     organisasjoner,
     ansatte,

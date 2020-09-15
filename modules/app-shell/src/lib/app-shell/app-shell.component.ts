@@ -32,7 +32,7 @@ import { BasePage } from '../base-page.component';
 // }
 
 @Component({
-  selector: 'npx-fire-ui-app-shell',
+  selector: 'ngx-fire-ui-app-shell',
   templateUrl: './app-shell.component.html',
   styleUrls: ['./app-shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
@@ -106,6 +106,7 @@ export class AppShellComponent implements OnInit {
   routerOutletsEvents(ev: BasePage) {
     if (!ev.pageId) {
       console.error('Every page needs to extend base-page');
+      console.error(ev);
     }
     this.currentPageId = ev.pageId ?? 'Set pageId';
     console.log(ev.pageId);

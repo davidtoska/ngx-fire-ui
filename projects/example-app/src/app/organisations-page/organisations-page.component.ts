@@ -3,7 +3,7 @@ import { StoreSync } from '@ngx-fire-ui/core';
 import { BasePage } from 'modules/app-shell/src/lib/base-page.component';
 
 @Component({
-  selector: 'npx-fire-ui-organisations-page',
+  selector: 'ngx-fire-ui-organisations-page',
   templateUrl: './organisations-page.component.html',
   styleUrls: ['./organisations-page.component.scss'],
 })

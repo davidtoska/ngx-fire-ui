@@ -11,6 +11,7 @@ import { OrganisationsPageComponent } from './organisations-page/organisations-p
 import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
+import { OrderFormComponent } from './order-form/order-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { EmployeesPageComponent } from './employees-page/employees-page.componen
     OrganisationsPageComponent,
     HomePageComponent,
     EmployeesPageComponent,
+    OrderFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,17 +33,18 @@ import { EmployeesPageComponent } from './employees-page/employees-page.componen
             {
               path: URLS.home,
               component: HomePageComponent,
-              data: { title: 'Home' },
             },
             {
               path: URLS.organisations,
               component: OrganisationsPageComponent,
-              data: { title: 'Organisations' },
+            },
+            {
+              path: URLS.orders,
+              component: OrderFormComponent,
             },
             {
               path: URLS.employees,
               component: EmployeesPageComponent,
-              data: { title: 'Employees' },
             },
             ...appShellRoutes,
           ],

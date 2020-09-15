@@ -1,17 +1,14 @@
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { isDate, isPrimitive, PrimitiveType } from './isFunctions';
+import { isPrimitive, PrimitiveType } from './isFunctions';
 
 /**
- * This store only takes boolean, strings, numbers, and Dates
+ * This store only takes boolean, strings, numbers
  */
-export class StoreSync<T> {
+export class StoreSync<T extends Record<string, PrimitiveType>> {
   state: Readonly<T>;
 
   constructor(initialState: T) {
     Object.values(initialState).forEach((value) => {
-      const isValid = isPrimitive(value) || isDate(value);
-      if (!isValid) {
+      if (isPrimitive(value)) {
         throw new Error(
           'StorSync only takes values: boolean, string, number | date'
         );

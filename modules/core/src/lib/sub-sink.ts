@@ -1,11 +1,6 @@
 import { Subscription, SubscriptionLike } from 'rxjs';
-import { isFunction } from './isFunctions';
 
-// const isFunction = (fn: any) => typeof fn === 'function';
-
-// export interface SubscriptionLike {
-//   unsubscribe(): void;
-// }
+const isFunction = (fn: any) => typeof fn === 'function';
 
 export class SubSink {
   protected _subs: SubscriptionLike[] = [];

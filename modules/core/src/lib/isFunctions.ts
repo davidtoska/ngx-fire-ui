@@ -1,7 +1,4 @@
-/**
- * string, number, or boolean
- */
-export type PrimitiveType = string | number | boolean;
+import { PrimitiveType } from './types';
 
 export const isString = (value: any): value is string => {
   return typeof value === 'string';

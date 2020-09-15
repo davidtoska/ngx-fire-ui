@@ -25,6 +25,12 @@ import { LayoutService } from '../services/layout.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BasePage } from '../base-page.component';
 
+// interface UiState {
+//   sideNavCollapsed: boolean;
+//   isScrolled: boolean;
+//   isHandset: boolean;
+// }
+
 @Component({
   selector: 'npx-fire-ui-app-shell',
   templateUrl: './app-shell.component.html',
@@ -57,6 +63,8 @@ export class AppShellComponent implements OnInit {
     this.route.data.subscribe((d) => console.log(d));
     this.menuItems = [...this.appOptions.menuItems];
     this.layout.isHandset$.subscribe((isHandset) => {
+      const a = isHandset;
+
       this.ui.setState({ isHandset });
     });
 

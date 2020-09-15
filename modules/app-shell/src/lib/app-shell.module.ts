@@ -19,6 +19,7 @@ import { NewContextModalComponent } from './new-context-modal/new-context-modal.
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
@@ -46,6 +47,7 @@ export const appShellRoutes: Route[] = [];
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    DynamicFormModule,
   ],
   declarations: [
     AppShellComponent,

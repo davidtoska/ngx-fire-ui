@@ -16,6 +16,7 @@ import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
 import { OrderFormComponent } from './order-form/order-form.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { OrderFormComponent } from './order-form/order-form.component';
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
     DynamicFormModule,
+    MatGridListModule,
     RouterModule.forRoot(
       [
         {

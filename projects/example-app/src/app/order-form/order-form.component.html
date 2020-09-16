@@ -1,2 +1,9 @@
-<p>order-form works!</p>
-<ngx-fire-ui-form></ngx-fire-ui-form>
+<h1>Order forms dynamic test</h1>
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <ngx-fire-ui-form [fieldConfig]="formBuilder"></ngx-fire-ui-form>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <ngx-fire-ui-form [fieldConfig]="fieldsSet"></ngx-fire-ui-form>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,12 +1,29 @@
 // import { AppShellOptions } from 'modules/app-shell/src/lib/app-shell/shell-options';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { AppShellOptions } from '@ngx-fire-ui/app-shell';
+import { Tab } from '@ngx-fire-ui/app-shell';
 
 export const URLS = {
   home: 'home',
   organisations: 'organisations',
-  employees: 'employees'
-}
+  employees: 'employees',
+  organisationsFirst: 'first',
+};
+
+export const organisationsTabs: Tab[] = [
+  {
+    label: 'First',
+    route: './first',
+  },
+  {
+    label: 'Second',
+    route: './second',
+  },
+  {
+    label: 'Third',
+    route: './third',
+  },
+];
 
 const organisasjoner = {
   route: URLS.organisations,
@@ -24,70 +41,5 @@ export const shellOptions: AppShellOptions = {
   contextMenu: true,
   homeUrl: URLS.home,
   iconUrl: 'assets/tvicon.svg',
-  menuItems: [
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-  ],
+  menuItems: [organisasjoner, ansatte],
 };

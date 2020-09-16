@@ -1,0 +1,38 @@
+$color-tab-link: #476282;
+$color-header-bg: #1a73e8;
+
+.mat-tab-header {
+  border-bottom: 0;
+}
+nav {
+  margin-left: 10px;
+}
+mat-divider {
+  margin: 0 24px 12px 24px;
+}
+.mat-tab-link {
+  color: $color-tab-link;
+  padding: 0;
+  margin: 0 14px;
+  height: 40px;
+  min-width: auto !important;
+  transition: opacity ease-in 0.2s;
+}
+.mat-tab-label-active {
+  color: $color-header-bg;
+  opacity: 1;
+}
+::ng-deep .mat-ink-bar {
+  background-color: $color-header-bg !important;
+  height: 3px !important;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.tab-page {
+  width: 100%;
+  height: 100%;
+
+  .inner-page {
+    padding: 12px 24px;
+  }
+}

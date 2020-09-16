@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { organisationsTabs } from '../appConfig';
 
 @Component({
   selector: 'npx-fire-ui-organisations-page',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganisationsPageComponent implements OnInit {
   initialized = true;
+
+  navLinks = organisationsTabs;
 
   constructor() {}
 

@@ -11,9 +11,16 @@ import { OrganisationsPageComponent } from './organisations-page/organisations-p
 import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
+import { Component1Component } from './component1/component1.component';
 
 @NgModule({
-  declarations: [AppComponent, OrganisationsPageComponent, HomePageComponent, EmployeesPageComponent],
+  declarations: [
+    AppComponent,
+    OrganisationsPageComponent,
+    HomePageComponent,
+    EmployeesPageComponent,
+    Component1Component,
+  ],
   imports: [
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
@@ -30,6 +37,21 @@ import { EmployeesPageComponent } from './employees-page/employees-page.componen
             {
               path: URLS.organisations,
               component: OrganisationsPageComponent,
+              children: [
+                {
+                  path: '',
+                  redirectTo: URLS.organisationsFirst,
+                  pathMatch: 'full',
+                },
+                {
+                  path: URLS.organisationsFirst,
+                  component: Component1Component,
+                },
+                {
+                  path: 'second',
+                  component: Component1Component,
+                },
+              ],
             },
             {
               path: URLS.employees,

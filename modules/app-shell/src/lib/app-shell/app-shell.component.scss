@@ -9,6 +9,7 @@ $color-nav-bg: #051e34;
 $color-button-on-hover: rgba(71, 98, 130, 0.4);
 $color-scrollbar-main: #8a9bb2;
 $color-scrollbar-bg: #262f3d;
+$color-page-headline: #1b3a57;
 
 .sidenav-container {
   height: 100vh;
@@ -170,7 +171,7 @@ mat-sidenav-content {
     }
     .profile-icon {
       position: absolute;
-      right: 280px;
+      right: 270px;
       color: $color-divider;
     }
     .profile-positioning {
@@ -181,6 +182,7 @@ mat-sidenav-content {
     &.while-scrolled {
       background-color: $color-navbar;
       color: $color-text-default;
+      z-index: 100;
       @include mat-elevation(2);
 
       .profile-icon {
@@ -189,6 +191,7 @@ mat-sidenav-content {
     }
   }
 }
+
 // Skillelinjer
 .divider {
   box-shadow: 0 -1px 0 $color-divider inset;
@@ -199,15 +202,16 @@ mat-sidenav-content {
 
 .page {
   padding-top: 48px;
-  min-height: calc(100vh - 48px);
+  padding-bottom: 120px;
+  min-height: calc(100vh - 48px - 120px);
   background-color: $color-content-bg;
-  .overskrift {
-    padding: 18px 24px 8px 24px;
-    font-size: 2em;
-    font-weight: 500;
-  }
 }
-
+::ng-deep .page-headline {
+  color: $color-page-headline;
+  padding: 14px 24px 14px 24px;
+  font-size: 2em;
+  font-weight: 500;
+}
 .contextMenu {
   width: 200px;
   margin-top: 10px;

@@ -20,7 +20,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { TabsComponent } from './tabs/tabs.component';
+import { NestedMenuComponent } from './nested-menu/nested-menu.component';
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
@@ -31,6 +33,7 @@ export const ROUTES = {
   },
 };
 export const appShellRoutes: Route[] = [];
+export { Tab } from './tabs/tabs.component';
 
 @NgModule({
   imports: [
@@ -48,6 +51,7 @@ export const appShellRoutes: Route[] = [];
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatTabsModule,
   ],
   declarations: [
     AppShellComponent,
@@ -56,8 +60,15 @@ export const appShellRoutes: Route[] = [];
     ContextMenuPageComponent,
     LoginPageComponent,
     NewContextModalComponent,
+    TabsComponent,
+    NestedMenuComponent,
   ],
-  exports: [AppShellComponent, LoginComponent],
+  exports: [
+    AppShellComponent,
+    LoginComponent,
+    TabsComponent,
+    NestedMenuComponent,
+  ],
   entryComponents: [NewContextModalComponent],
 })
 export class AppShellModule {

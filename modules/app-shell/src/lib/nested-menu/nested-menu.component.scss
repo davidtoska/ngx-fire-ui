@@ -4,7 +4,9 @@ $color-text-dark: rgba(0, 0, 0, 0.87);
 $color-text-accent: #1a73e8;
 
 mat-card {
-  min-width: 1050px;
+  // flex-grow: 1;
+  // width: 95%;
+  // min-width: 1050px;
   padding: 0;
 
   .breadcrumbs,
@@ -75,6 +77,7 @@ mat-card {
     text-align: left;
     padding-top: 4px;
     padding-bottom: 4px;
+    border-radius: 0;
   }
   mat-list {
     padding: 0;
@@ -120,7 +123,9 @@ mat-card {
         color: $color-text-dark;
       }
       .mat-icon-button {
-        height: 48px;
+        height: 32px;
+        width: 32px;
+        line-height: 32px;
         // transition: all ease-in 0.2s;
         mat-icon {
           opacity: 0;
@@ -145,7 +150,8 @@ mat-card {
         }
       }
       &:hover {
-        background: #f5f5f5;
+        background-color: #f5f5f5;
+        box-shadow: -1px 0 0 rgba(0, 0, 0, 0.12) inset;
       }
     }
   }

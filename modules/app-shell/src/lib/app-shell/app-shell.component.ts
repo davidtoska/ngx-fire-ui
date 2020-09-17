@@ -54,12 +54,12 @@ export class AppShellComponent implements OnInit {
     @Inject(APP_SHELL_OPTIONS) private appOptions: AppShellOptions
   ) {
     this.menuItems = [...this.appOptions.menuItems];
-    this.ui.state$.subscribe((state) => {
-      console.log(state);
-    });
-    this.isHandset$.subscribe((isHandset) => {
-      this.ui.update({ isHandset });
-    });
+    // this.ui.state$.subscribe((state) => {
+    //   console.log(state);
+    // });
+    // this.isHandset$.subscribe((isHandset) => {
+    //   this.ui.update({ isHandset });
+    // });
     this.authService.isLoggedId$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
       console.log(this.isLoggedIn);
@@ -68,7 +68,7 @@ export class AppShellComponent implements OnInit {
 
   ngOnInit(): void {
     this.scrollService.state$.subscribe((state) => {
-      this.ui.update({ isScrolled: state.isScrolled });
+      // this.ui.update({ isScrolled: state.isScrolled });
       this.ref.detectChanges();
     });
   }
@@ -90,8 +90,8 @@ export class AppShellComponent implements OnInit {
     this.authService.logIn();
   }
 
-  sideNavToggle() {
-    const sideNavCollapsed = !this.ui.select('sideNavCollapsed');
-    this.ui.update({ sideNavCollapsed });
-  }
+  // sideNavToggle() {
+  // const sideNavCollapsed = !this.ui.select('sideNavCollapsed');
+  // this.ui.update({ sideNavCollapsed });
+  // }
 }

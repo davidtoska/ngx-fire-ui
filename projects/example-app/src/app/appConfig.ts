@@ -10,21 +10,6 @@ export const URLS = {
   organisationsFirst: 'first',
 };
 
-export const organisationsTabs: Tab[] = [
-  {
-    label: 'First',
-    route: './first',
-  },
-  {
-    label: 'Second',
-    route: './second',
-  },
-  {
-    label: 'Third',
-    route: './third',
-  },
-];
-
 const organisasjoner = {
   route: URLS.organisations,
   label: 'Organisasjoner',

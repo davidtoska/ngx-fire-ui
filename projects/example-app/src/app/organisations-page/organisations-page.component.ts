@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { organisationsTabs } from '../appConfig';
+import { Tab } from '@ngx-fire-ui/app-shell';
 
 @Component({
   selector: 'npx-fire-ui-organisations-page',
@@ -9,7 +9,20 @@ import { organisationsTabs } from '../appConfig';
 export class OrganisationsPageComponent implements OnInit {
   initialized = true;
 
-  navLinks = organisationsTabs;
+  navLinks: Tab[] = [
+    {
+      label: 'First',
+      route: './first',
+    },
+    {
+      label: 'Second',
+      route: './second',
+    },
+    {
+      label: 'Third',
+      route: './third',
+    },
+  ];
 
   constructor() {}
 

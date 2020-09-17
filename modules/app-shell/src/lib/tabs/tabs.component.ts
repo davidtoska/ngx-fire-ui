@@ -1,9 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-export interface Tab {
-  label: string;
-  route: string;
-}
+import { Tab } from './tabs.interface';
 
 @Component({
   selector: 'npx-fire-ui-tabs',

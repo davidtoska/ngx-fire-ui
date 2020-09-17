@@ -33,7 +33,6 @@ export const ROUTES = {
   },
 };
 export const appShellRoutes: Route[] = [];
-export { Tab } from './tabs/tabs.component';
 
 @NgModule({
   imports: [

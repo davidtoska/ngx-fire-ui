@@ -30,6 +30,7 @@ export class NestedMenuComponent implements OnInit {
   triggerOrigin: any;
   isOpen = false;
   data!: { key: string; value: string | number };
+  // nestedMenuOverlayClass: 'nested-menu-overlay-class';
 
   levelOneItems = [
     {
@@ -97,11 +98,6 @@ export class NestedMenuComponent implements OnInit {
     {
       key: 'Question',
       value: 'Har du følt deg deprimert noen gang?',
-    },
-    {
-      key: 'Svaralternativer',
-      value: '3',
-      isArray: true,
     },
     {
       key: 'Kind',

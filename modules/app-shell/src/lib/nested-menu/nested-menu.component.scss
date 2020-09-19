@@ -5,9 +5,11 @@ $color-text-accent: #1a73e8;
 // $color-scrollbar-main: #8a9bb2;
 // $color-scrollbar-bg: #262f3d;
 
+$card-width: 1256px;
+
 mat-card {
   // flex-grow: 1;
-  // width: 95%;
+  width: $card-width;
   // min-width: 1050px;
   padding: 0;
 
@@ -180,9 +182,7 @@ mat-card {
           }
         }
       }
-      .spacer {
-        flex-grow: 1;
-      }
+
       &.is-array {
         p {
           padding-left: 4px;
@@ -208,7 +208,9 @@ mat-card.handset {
 .divider {
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12) inset;
 }
-
+.spacer {
+  flex-grow: 1;
+}
 ::ng-deep {
   .no-hover-effect.mat-button.mat-primary .mat-button-focus-overlay,
   .no-hover-effect.mat-button.mat-accent .mat-button-focus-overlay,
@@ -217,9 +219,59 @@ mat-card.handset {
   }
 }
 
-.edit-field {
-  min-width: 100%;
-  width: 100%;
+.editor {
+  width: calc(1256px * 0.6 + -300px);
+  transform: translateX(-20px);
   min-height: 80px;
-  background-color: #fff;
+  padding: 16px;
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .edit-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .key-field,
+  .value-field {
+    padding: 8px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+  }
+  .key-field {
+    background-color: #f5f5f5;
+    color: rgba(0, 0, 0, 0.26);
+    width: 120px;
+  }
+  .value-field {
+    color: rgba(0, 0, 0, 0.87);
+    min-width: 120px;
+    // max-width: 120px;
+
+    &:focus {
+      box-shadow: 0 0 0 2px $color-text-accent inset, 0 0 0 1px #e0e0e0 inset;
+      outline: none;
+    }
+  }
+  p {
+    align-self: center;
+    margin: 0 20px;
+    // flex-grow: 1;
+    text-align: center;
+  }
+  .options {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+  }
+
+  .save-button {
+    background-color: $color-text-accent;
+    color: $color-grey-primary;
+  }
 }

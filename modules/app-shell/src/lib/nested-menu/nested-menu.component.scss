@@ -2,6 +2,8 @@ $color-grey-primary: #fafafa;
 $color-text-grey: rgba(0, 0, 0, 0.54);
 $color-text-dark: rgba(0, 0, 0, 0.87);
 $color-text-accent: #1a73e8;
+// $color-scrollbar-main: #8a9bb2;
+// $color-scrollbar-bg: #262f3d;
 
 mat-card {
   // flex-grow: 1;
@@ -58,13 +60,31 @@ mat-card {
   display: flex;
   flex-direction: column;
   min-height: 600px;
-
+  max-height: 600px;
+  overflow-y: auto;
   box-shadow: -1px 0 0 rgba(0, 0, 0, 0.12) inset;
+
+  &::-webkit-scrollbar {
+    background-color: #fff;
+
+    width: 4px;
+    background-clip: padding-box;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    // background-color: $color-grey-primary;
+    // background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background-clip: padding-box;
+  }
 
   .name {
     // flex-grow: 1;
     padding: 0 16px;
     height: 44px;
+    min-height: 44px;
     box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.12) inset;
 
     p {
@@ -81,6 +101,17 @@ mat-card {
   }
   mat-list {
     padding: 0;
+
+    .array-parent {
+      p {
+        padding-left: 0;
+      }
+    }
+    .array-child {
+      p {
+        padding-left: 56px;
+      }
+    }
   }
 
   mat-list-item {
@@ -94,7 +125,7 @@ mat-card {
   }
 
   &:not(:last-of-type) {
-    width: 27%;
+    width: 20%;
     mat-list mat-list-item {
       mat-icon {
         position: absolute;
@@ -122,18 +153,26 @@ mat-card {
       p span {
         color: $color-text-dark;
       }
+      .add-button {
+        color: $color-text-accent;
+
+        &.in-list {
+          margin-left: 40px;
+        }
+      }
       .mat-icon-button {
         height: 32px;
         width: 32px;
         line-height: 32px;
         // transition: all ease-in 0.2s;
-        mat-icon {
+        mat-icon:not(.add-icon) {
           opacity: 0;
           // transition: opacity ease-in 0.2s;
         }
       }
+
       &:hover {
-        .mat-icon-button mat-icon {
+        .mat-icon-button mat-icon:not(.add-icon) {
           opacity: 1;
           color: $color-text-grey;
           &:hover {
@@ -151,7 +190,7 @@ mat-card {
       }
       &:hover {
         background-color: #f5f5f5;
-        box-shadow: -1px 0 0 rgba(0, 0, 0, 0.12) inset;
+        box-shadow: -1px 0 0 transparent inset;
       }
     }
   }
@@ -168,4 +207,19 @@ mat-card.handset {
 
 .divider {
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+::ng-deep {
+  .no-hover-effect.mat-button.mat-primary .mat-button-focus-overlay,
+  .no-hover-effect.mat-button.mat-accent .mat-button-focus-overlay,
+  .no-hover-effect.mat-button.mat-warn .mat-button-focus-overlay {
+    background-color: transparent;
+  }
+}
+
+.edit-field {
+  min-width: 100%;
+  width: 100%;
+  min-height: 80px;
+  background-color: #fff;
 }

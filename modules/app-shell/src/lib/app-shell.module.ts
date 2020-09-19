@@ -23,6 +23,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TabsComponent } from './tabs/tabs.component';
 import { NestedMenuComponent } from './nested-menu/nested-menu.component';
+import { MatRippleModule } from '@angular/material/core';
+import { OverlayModule } from '@angular/cdk/overlay';
+
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
@@ -51,6 +54,8 @@ export const appShellRoutes: Route[] = [];
     MatInputModule,
     MatCardModule,
     MatTabsModule,
+    MatRippleModule,
+    OverlayModule,
   ],
   declarations: [
     AppShellComponent,

@@ -7,7 +7,7 @@
     <p>{{ boardConfig.levelTwoSelectedName }}</p>
   </div>
   <div class="levels">
-    <div class="level">
+    <!-- <div class="level">
       <div class="name">
         <mat-icon>{{ boardConfig.levelOneIcon }}</mat-icon>
         <p>{{ appConfig.contextName }}</p>
@@ -25,7 +25,7 @@
           <mat-icon>chevron_right</mat-icon>
         </mat-list-item>
       </mat-list>
-    </div>
+    </div> -->
 
     <div class="level">
       <div class="name">
@@ -52,28 +52,123 @@
         <mat-icon>{{ boardConfig.levelThreeIcon }}</mat-icon>
         <p>{{ boardConfig.levelTwoSelectedName }}</p>
       </div>
-      <button mat-button class="header-button divider">
+      <!-- <button mat-button class="header-button divider">
         <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelOneButton }}
-      </button>
+      </button> -->
       <button mat-button class="header-button">
         <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelThreeButton }}
       </button>
       <mat-list>
         <mat-list-item
-          *ngFor="let kv of levelThreeItem"
-          [class.is-array]="kv.isArray"
+          *ngFor="let item of levelThreeItems"
+          [class.selected]="item.selected"
         >
-          <mat-icon *ngIf="kv.isArray">arrow_drop_down</mat-icon>
+          <!-- [class.is-array]="item.isArray" -->
+          <!-- <mat-icon *ngIf="kv.isArray">arrow_drop_down</mat-icon> -->
           <p>
-            {{ kv.key }}:&nbsp; <span>{{ kv.value }}</span>
+            {{ item.id }}
+            <!-- :&nbsp; <span>{{ kv.value }}</span> -->
+          </p>
+          <mat-icon>chevron_right</mat-icon>
+
+          <!-- <div class="spacer"></div> -->
+
+          <!-- ??? [disableRipple]="true" ??? -->
+          <!-- <button mat-icon-button><mat-icon>edit</mat-icon></button> -->
+          <!-- <button mat-icon-button><mat-icon>delete</mat-icon></button> -->
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div class="level">
+      <div class="name">
+        <mat-icon>{{ boardConfig.levelFourIcon }}</mat-icon>
+        <p>{{ boardConfig.levelThreeSelectedName }}</p>
+      </div>
+
+      <button mat-button class="header-button">
+        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelFourButton }}
+      </button>
+
+      <mat-list>
+        <ng-container *ngFor="let array of levelFourArrays; index as i">
+          <mat-list-item class="array-parent" (click)="toggleOpen(i)">
+            <mat-icon>
+              {{ array.open ? 'arrow_drop_down' : 'arrow_right' }}
+            </mat-icon>
+            <p>
+              {{ array.label }}
+              <span *ngIf="array.hint">:&nbsp; {{ array.hint }}</span>
+            </p>
+            <div class="spacer"></div>
+            <button
+              mat-icon-button
+              (click)="addListItemWithToggle(i)"
+              color="primary"
+              class="add-button"
+            >
+              <mat-icon class="add-icon">add</mat-icon>
+            </button>
+          </mat-list-item>
+
+          <ng-container *ngIf="array.open">
+            <mat-list-item
+              class="array-child"
+              *ngFor="let kv of array.children"
+              cdkOverlayOrigin
+              #trigger="cdkOverlayOrigin"
+              (click)="toggle(trigger, kv)"
+            >
+              <p>
+                {{ kv.key }} :&nbsp; <span>{{ kv.value }}</span>
+              </p>
+              <div class="spacer"></div>
+
+              <button mat-icon-button><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button><mat-icon>delete</mat-icon></button>
+            </mat-list-item>
+            <mat-list-item matRipple (click)="addListItem(i)">
+              <button
+                mat-button
+                [disableRipple]="true"
+                color="primary"
+                class="add-button in-list no-hover-effect"
+              >
+                Nytt svar
+                <!-- <mat-icon class="add-icon">add</mat-icon> -->
+              </button>
+            </mat-list-item>
+          </ng-container>
+        </ng-container>
+      </mat-list>
+
+      <mat-list>
+        <mat-list-item
+          *ngFor="let kv of levelFourItem"
+          cdkOverlayOrigin
+          #trigger="cdkOverlayOrigin"
+          (click)="toggle(trigger, kv)"
+        >
+          <p>
+            {{ kv.key }}
+            :&nbsp; <span>{{ kv.value }}</span>
           </p>
           <div class="spacer"></div>
 
-          <!-- ??? [disableRipple]="true" ??? -->
           <button mat-icon-button><mat-icon>edit</mat-icon></button>
-          <button mat-icon-button><mat-icon>delete</mat-icon></button>
         </mat-list-item>
       </mat-list>
     </div>
   </div>
 </mat-card>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="triggerOrigin"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <mat-card class="edit-field">
+    {{ data.key }}
+    {{ data.value }}
+  </mat-card>
+</ng-template>

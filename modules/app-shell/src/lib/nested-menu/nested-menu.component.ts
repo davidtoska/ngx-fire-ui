@@ -112,7 +112,7 @@ export class NestedMenuComponent implements OnInit {
     {
       label: 'Svaralternativer',
       // hint: 3,
-      open: false,
+      open: true,
       children: [
         {
           keyValues: [
@@ -166,7 +166,9 @@ export class NestedMenuComponent implements OnInit {
     this.triggerOrigin = trigger;
     this.isOpen = !this.isOpen;
   }
-
+  closeEditor() {
+    this.isOpen = !this.isOpen;
+  }
   addListItem(i: number) {}
 
   addListItemWithToggle(i: number) {

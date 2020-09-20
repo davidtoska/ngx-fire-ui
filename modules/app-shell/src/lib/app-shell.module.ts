@@ -26,6 +26,7 @@ import { NestedMenuComponent } from './nested-menu/nested-menu.component';
 import { MatRippleModule } from '@angular/material/core';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { KeyValuePairComponent } from './nested-menu/key-value-pair/key-value-pair.component';
+import { KeyValueEditorComponent } from './nested-menu/key-value-editor/key-value-editor.component';
 
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
@@ -68,6 +69,7 @@ export const appShellRoutes: Route[] = [];
     TabsComponent,
     NestedMenuComponent,
     KeyValuePairComponent,
+    KeyValueEditorComponent,
   ],
   exports: [
     AppShellComponent,

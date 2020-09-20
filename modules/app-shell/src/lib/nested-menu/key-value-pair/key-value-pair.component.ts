@@ -11,6 +11,7 @@ export class KeyValuePairComponent implements OnInit {
     value: string | number;
     deletable?: boolean;
   };
+  @Input() isChild?: boolean;
 
   constructor() {}
 

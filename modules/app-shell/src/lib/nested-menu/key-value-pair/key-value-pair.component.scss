@@ -3,41 +3,49 @@ $color-text-accent: #1a73e8;
 $color-grey-primary: #fafafa;
 $color-text-grey: rgba(0, 0, 0, 0.54);
 
-mat-list-item.mat-list-item {
+.mat-list-item {
   height: 32px;
   color: $color-text-grey;
   cursor: pointer;
-  p {
-    padding-left: 25px;
-    margin: 0;
+}
+.mat-icon-button {
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+}
+p {
+  padding-left: 24px;
+  margin: 0;
+
+  span {
+    color: $color-text-dark;
   }
 }
 
+.add-button {
+  color: $color-text-accent;
+}
+
+.edit-icon,
+.delete-icon {
+  opacity: 0;
+}
+.in-list {
+  margin-left: 24px;
+}
+.is-array {
+  p {
+    padding-left: 4px;
+  }
+}
+.array-child p {
+  padding-left: 56px;
+}
+
 mat-list-item {
-  p span {
-    color: $color-text-dark;
-  }
-  .add-button {
-    color: $color-text-accent;
-
-    &.in-list {
-      margin-left: 24px;
-    }
-  }
-  .mat-icon-button {
-    height: 32px;
-    width: 32px;
-    line-height: 32px;
-    // transition: all ease-in 0.2s;
-  }
-
-  .edit-icon,
-  .delete-icon {
-    opacity: 0;
-    // transition: opacity ease-in 0.2s;
-  }
-
   &:hover {
+    background-color: #f5f5f5;
+    box-shadow: -1px 0 0 transparent inset;
     .edit-icon,
     .delete-icon {
       opacity: 1;
@@ -49,42 +57,15 @@ mat-list-item {
         color: $color-text-dark;
       }
     }
-
-    // .mat-icon-button mat-icon:not(.add-icon) {
-    //   opacity: 1;
-    //   color: $color-text-grey;
-    //   &:hover {
-    //     color: $color-text-dark;
-    //   }
-    // }
-  }
-
-  &.is-array {
-    p {
-      padding-left: 4px;
-    }
-  }
-  &:hover {
-    background-color: #f5f5f5;
-    box-shadow: -1px 0 0 transparent inset;
   }
 }
-mat-list-item {
-  mat-icon {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    opacity: 0;
-    transition: opacity ease-in 0.2s;
-  }
-  &.selected {
-    mat-icon {
-      opacity: 1;
-    }
-  }
-  &:hover,
-  &.selected {
-    background-color: rgba(0, 0, 0, 0.08);
-    color: $color-text-dark;
-  }
+mat-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  transition: opacity ease-in 0.2s;
+}
+
+.spacer {
+  flex-grow: 1;
 }

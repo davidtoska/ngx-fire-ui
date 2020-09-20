@@ -1,0 +1,90 @@
+$color-text-dark: rgba(0, 0, 0, 0.87);
+$color-text-accent: #1a73e8;
+$color-grey-primary: #fafafa;
+$color-text-grey: rgba(0, 0, 0, 0.54);
+
+mat-list-item.mat-list-item {
+  height: 32px;
+  color: $color-text-grey;
+  cursor: pointer;
+  p {
+    padding-left: 25px;
+    margin: 0;
+  }
+}
+
+mat-list-item {
+  p span {
+    color: $color-text-dark;
+  }
+  .add-button {
+    color: $color-text-accent;
+
+    &.in-list {
+      margin-left: 24px;
+    }
+  }
+  .mat-icon-button {
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+    // transition: all ease-in 0.2s;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    opacity: 0;
+    // transition: opacity ease-in 0.2s;
+  }
+
+  &:hover {
+    .edit-icon,
+    .delete-icon {
+      opacity: 1;
+    }
+    .edit-icon {
+      color: $color-text-grey;
+
+      &:hover {
+        color: $color-text-dark;
+      }
+    }
+
+    // .mat-icon-button mat-icon:not(.add-icon) {
+    //   opacity: 1;
+    //   color: $color-text-grey;
+    //   &:hover {
+    //     color: $color-text-dark;
+    //   }
+    // }
+  }
+
+  &.is-array {
+    p {
+      padding-left: 4px;
+    }
+  }
+  &:hover {
+    background-color: #f5f5f5;
+    box-shadow: -1px 0 0 transparent inset;
+  }
+}
+mat-list-item {
+  mat-icon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    opacity: 0;
+    transition: opacity ease-in 0.2s;
+  }
+  &.selected {
+    mat-icon {
+      opacity: 1;
+    }
+  }
+  &:hover,
+  &.selected {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: $color-text-dark;
+  }
+}

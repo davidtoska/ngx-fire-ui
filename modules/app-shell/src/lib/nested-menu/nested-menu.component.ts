@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NestedMenuComponent implements OnInit {
   appConfig = {
-    contextName: 'ISPE',
+    contextName: 'Depresjon modul A',
   };
 
   boardConfig = {
@@ -29,7 +29,7 @@ export class NestedMenuComponent implements OnInit {
 
   triggerOrigin: any;
   isOpen = false;
-  data!: { key: string; value: string | number };
+  data!: { key: string; value: string | number; deletable?: boolean };
   // nestedMenuOverlayClass: 'nested-menu-overlay-class';
 
   levelOneItems = [
@@ -111,20 +111,24 @@ export class NestedMenuComponent implements OnInit {
   levelFourArrays = [
     {
       label: 'Svaralternativer',
-      hint: 3,
-      open: true,
+      // hint: 3,
+      open: false,
       children: [
         {
-          key: 'ja',
-          value: '1',
+          keyValues: [
+            { key: 'Svartekst', value: 'Ja' },
+            { key: 'Verdi', value: '1' },
+          ],
+          deletable: true,
+          open: true,
         },
         {
-          key: 'nei',
-          value: '0',
-        },
-        {
-          key: 'vet ikke',
-          value: '0.5',
+          keyValues: [
+            { key: 'Svartekst', value: 'Nei' },
+            { key: 'Verdi', value: '0' },
+          ],
+          deletable: true,
+          open: true,
         },
       ],
     },
@@ -149,7 +153,15 @@ export class NestedMenuComponent implements OnInit {
     this.levelFourArrays[i].open = !this.levelFourArrays[i].open;
   }
 
-  toggle(trigger: any, data: { key: string; value: string | number }) {
+  toggleSubParent(arrayIndex: number, childIndex: number) {
+    const childRef = this.levelFourArrays[arrayIndex].children[childIndex];
+    childRef.open = !childRef.open;
+  }
+
+  toggle(
+    trigger: any,
+    data: { key: string; value: string | number; deletable?: false }
+  ) {
     this.data = data;
     this.triggerOrigin = trigger;
     this.isOpen = !this.isOpen;

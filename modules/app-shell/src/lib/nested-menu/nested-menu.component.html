@@ -7,30 +7,11 @@
     <p>{{ boardConfig.levelTwoSelectedName }}</p>
   </div>
   <div class="levels">
-    <!-- <div class="level">
+    <!-- første boks -->
+    <div class="level">
       <div class="name">
         <mat-icon>{{ boardConfig.levelOneIcon }}</mat-icon>
         <p>{{ appConfig.contextName }}</p>
-      </div>
-      <button mat-button class="header-button">
-        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelOneButton }}
-      </button>
-      <mat-list>
-        <mat-list-item
-          *ngFor="let item of levelOneItems; index as i"
-          (click)="levelOneSelect(i)"
-          [class.selected]="item.selected"
-        >
-          <p>{{ item.name }}</p>
-          <mat-icon>chevron_right</mat-icon>
-        </mat-list-item>
-      </mat-list>
-    </div> -->
-
-    <div class="level">
-      <div class="name">
-        <mat-icon>{{ boardConfig.levelTwoIcon }}</mat-icon>
-        <p>{{ boardConfig.levelOneSelectedName }}</p>
       </div>
       <button mat-button class="header-button">
         <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelTwoButton }}
@@ -47,14 +28,12 @@
       </mat-list>
     </div>
 
+    <!-- andre boks  -->
     <div class="level">
       <div class="name">
         <mat-icon>{{ boardConfig.levelThreeIcon }}</mat-icon>
         <p>{{ boardConfig.levelTwoSelectedName }}</p>
       </div>
-      <!-- <button mat-button class="header-button divider">
-        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelOneButton }}
-      </button> -->
       <button mat-button class="header-button">
         <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelThreeButton }}
       </button>
@@ -63,42 +42,32 @@
           *ngFor="let item of levelThreeItems"
           [class.selected]="item.selected"
         >
-          <!-- [class.is-array]="item.isArray" -->
-          <!-- <mat-icon *ngIf="kv.isArray">arrow_drop_down</mat-icon> -->
           <p>
             {{ item.id }}
-            <!-- :&nbsp; <span>{{ kv.value }}</span> -->
           </p>
           <mat-icon>chevron_right</mat-icon>
-
-          <!-- <div class="spacer"></div> -->
-
-          <!-- ??? [disableRipple]="true" ??? -->
-          <!-- <button mat-icon-button><mat-icon>edit</mat-icon></button> -->
-          <!-- <button mat-icon-button><mat-icon>delete</mat-icon></button> -->
         </mat-list-item>
       </mat-list>
     </div>
 
+    <!-- tredje boks -->
     <div class="level">
       <div class="name">
         <mat-icon>{{ boardConfig.levelFourIcon }}</mat-icon>
         <p>{{ boardConfig.levelThreeSelectedName }}</p>
       </div>
 
-      <button mat-button class="header-button">
-        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelFourButton }}
-      </button>
-
+      <!-- Liste med lister -->
       <mat-list>
         <ng-container *ngFor="let array of levelFourArrays; index as i">
+          <!-- header med antall -->
           <mat-list-item class="array-parent" (click)="toggleOpen(i)">
             <mat-icon>
               {{ array.open ? 'arrow_drop_down' : 'arrow_right' }}
             </mat-icon>
             <p>
               {{ array.label }}
-              <span *ngIf="array.hint">:&nbsp; {{ array.hint }}</span>
+              <span>:&nbsp; {{ array.children.length }}</span>
             </p>
             <div class="spacer"></div>
             <button
@@ -111,22 +80,49 @@
             </button>
           </mat-list-item>
 
+          <!-- liste med sub-headers som inkluderer nummeret sitt -->
           <ng-container *ngIf="array.open">
-            <mat-list-item
-              class="array-child"
-              *ngFor="let kv of array.children"
-              cdkOverlayOrigin
-              #trigger="cdkOverlayOrigin"
-              (click)="toggle(trigger, kv)"
-            >
-              <p>
-                {{ kv.key }} :&nbsp; <span>{{ kv.value }}</span>
-              </p>
-              <div class="spacer"></div>
+            <ng-container *ngFor="let obj of array.children; index as I">
+              <!-- sub-header -->
+              <mat-list-item
+                class="array-sub-parent"
+                (click)="toggleSubParent(i, I)"
+              >
+                <mat-icon class="open-icon">
+                  {{ obj.open ? 'arrow_drop_down' : 'arrow_right' }}
+                </mat-icon>
+                <p>
+                  {{ I + 1 }}
+                </p>
+                <div class="spacer"></div>
 
-              <button mat-icon-button><mat-icon>edit</mat-icon></button>
-              <button mat-icon-button><mat-icon>delete</mat-icon></button>
-            </mat-list-item>
+                <button mat-icon-button color="warn" class="delete-button">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+              </mat-list-item>
+
+              <!-- liste med key-values -->
+              <ng-container *ngIf="obj.open">
+                <mat-list-item
+                  class="array-child"
+                  *ngFor="let kv of obj.keyValues; index as ii"
+                  cdkOverlayOrigin
+                  #trigger="cdkOverlayOrigin"
+                  (click)="toggle(trigger, kv)"
+                >
+                  <p>
+                    {{ kv.key }} :&nbsp; <span>{{ kv.value }}</span>
+                  </p>
+                  <div class="spacer"></div>
+
+                  <button mat-icon-button class="edit-icon">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </mat-list-item>
+              </ng-container>
+            </ng-container>
+
+            <!-- legg til listeelement -->
             <mat-list-item matRipple (click)="addListItem(i)">
               <button
                 mat-button
@@ -142,8 +138,18 @@
         </ng-container>
       </mat-list>
 
+      <!-- Liste med key-values -->
       <mat-list>
-        <mat-list-item
+        <npx-fire-ui-key-value-pair
+          *ngFor="let kv of levelFourItem"
+          cdkOverlayOrigin
+          #trigger="cdkOverlayOrigin"
+          (click)="toggle(trigger, kv)"
+          [keyValue]="kv"
+        >
+        </npx-fire-ui-key-value-pair>
+
+        <!-- <mat-list-item
           *ngFor="let kv of levelFourItem"
           cdkOverlayOrigin
           #trigger="cdkOverlayOrigin"
@@ -155,8 +161,10 @@
           </p>
           <div class="spacer"></div>
 
-          <button mat-icon-button><mat-icon>edit</mat-icon></button>
-        </mat-list-item>
+          <button mat-icon-button class="edit-icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-list-item> -->
       </mat-list>
     </div>
   </div>
@@ -174,22 +182,20 @@
     <mat-card-content>
       <form>
         <div class="edit-field">
-          <!-- <mat-label>{{ data.key }}</mat-label> -->
-          <!-- <mat-label>Input</mat-label> -->
           <input matInput disabled class="key-field" [placeholder]="data.key" />
-          <!-- <button mat-raised-button disabled>{{ data.key }}</button> -->
         </div>
         <p>=</p>
         <div class="edit-field">
-          <!-- <mat-label>Color</mat-label> -->
           <input matInput class="value-field" [value]="data.value" />
         </div>
       </form>
 
       <div class="options">
-        <!-- <button mat-icon-button><mat-icon>delete</mat-icon></button> -->
+        <button mat-icon-button color="warn" *ngIf="data.deletable">
+          <mat-icon class="delete-icon">delete</mat-icon>
+        </button>
         <div class="spacer"></div>
-        <button mat-button>Avbryt</button>
+        <button mat-button (click)="isOpen = !isOpen">Avbryt</button>
         <button mat-flat-button class="save-button">Lagre</button>
       </div>
     </mat-card-content>

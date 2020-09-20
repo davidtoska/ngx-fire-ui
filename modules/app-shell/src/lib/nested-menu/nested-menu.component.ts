@@ -110,7 +110,7 @@ export class NestedMenuComponent implements OnInit {
   ];
   levelFourArrays = [
     {
-      label: 'Svaralternativer',
+      label: 'Svar-alternativer',
       // hint: 3,
       open: true,
       children: [

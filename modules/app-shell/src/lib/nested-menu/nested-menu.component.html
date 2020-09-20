@@ -58,7 +58,17 @@
         <mat-icon>{{ boardConfig.levelFourIcon }}</mat-icon>
         <p>{{ boardConfig.levelThreeSelectedName }}</p>
       </div>
-
+      <!-- Liste med key-values -->
+      <mat-list>
+        <npx-fire-ui-key-value-pair
+          *ngFor="let kv of levelFourItem"
+          cdkOverlayOrigin
+          #trigger="cdkOverlayOrigin"
+          (click)="toggle(trigger, kv)"
+          [keyValue]="kv"
+        >
+        </npx-fire-ui-key-value-pair>
+      </mat-list>
       <!-- Liste med lister -->
       <mat-list>
         <ng-container *ngFor="let array of levelFourArrays; index as i">
@@ -131,18 +141,6 @@
             </mat-list-item>
           </ng-container>
         </ng-container>
-      </mat-list>
-
-      <!-- Liste med key-values -->
-      <mat-list>
-        <npx-fire-ui-key-value-pair
-          *ngFor="let kv of levelFourItem"
-          cdkOverlayOrigin
-          #trigger="cdkOverlayOrigin"
-          (click)="toggle(trigger, kv)"
-          [keyValue]="kv"
-        >
-        </npx-fire-ui-key-value-pair>
       </mat-list>
     </div>
   </div>

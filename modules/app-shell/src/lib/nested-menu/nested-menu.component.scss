@@ -113,9 +113,11 @@ mat-card {
     height: 32px;
     color: $color-text-grey;
     cursor: pointer;
+
     p {
       padding-left: 28px;
       margin: 0;
+      // font-family: 'Roboto Mono', monospace !important;
     }
     &:hover {
       background-color: rgba(0, 0, 0, 0.08);
@@ -137,7 +139,7 @@ mat-card {
 }
 
 .level:not(:last-of-type) {
-  width: 22%;
+  width: 27%;
   mat-list mat-list-item {
     mat-icon {
       position: absolute;
@@ -162,9 +164,6 @@ mat-card {
 .level:last-of-type {
   flex-grow: 1;
 
-  .name {
-    margin-bottom: 12px;
-  }
   .delete-icon {
     opacity: 0;
   }
@@ -174,6 +173,16 @@ mat-card {
     .delete-icon {
       opacity: 1;
     }
+  }
+  mat-divider {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  mat-list:first-of-type {
+    padding-top: 12px;
+  }
+  mat-list:last-of-type {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
   }
 }
 .add-button {

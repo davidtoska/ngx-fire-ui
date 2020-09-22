@@ -111,6 +111,7 @@ export class NestedMenuComponent implements OnInit {
         selected: false,
       },
     ],
+    [],
   ];
 
   detailData = {

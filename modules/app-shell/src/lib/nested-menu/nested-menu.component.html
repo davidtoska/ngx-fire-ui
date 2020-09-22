@@ -1,67 +1,130 @@
 <mat-card>
   <div class="breadcrumbs">
-    <button mat-icon-button>
+    <button mat-icon-button (click)="setDepth(1)">
       <mat-icon>home</mat-icon>
     </button>
-    <mat-icon>chevron_right</mat-icon>
-    <p>{{ boardConfig.levelOneSelectedName }}</p>
-    <mat-icon>chevron_right</mat-icon>
-    <p>{{ boardConfig.levelTwoSelectedName }}</p>
+    <ng-container *ngIf="boardConfig.depth > 0">
+      <mat-icon>chevron_right</mat-icon>
+      <p>{{ boardConfig.selectedNames[1] }}</p>
+    </ng-container>
+    <ng-container *ngIf="boardConfig.depth > 1">
+      <mat-icon>chevron_right</mat-icon>
+      <p>{{ boardConfig.selectedNames[2] }}</p>
+    </ng-container>
+    <ng-container *ngIf="boardConfig.depth > 2">
+      <mat-icon>chevron_right</mat-icon>
+      <p>{{ boardConfig.selectedNames[3] }}</p>
+    </ng-container>
   </div>
+
   <div class="levels">
     <!-- første boks -->
-    <div class="level">
+    <div class="level" *ngIf="boardConfig.depth <= 2 && boardConfig.depth >= 1">
       <div class="name">
-        <mat-icon>{{ boardConfig.levelOneIcon }}</mat-icon>
+        <mat-icon>{{ boardConfig.icons[0] }}</mat-icon>
         <p>{{ appConfig.contextName }}</p>
       </div>
       <button mat-button class="header-button">
-        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelTwoButton }}
+        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.buttons[0] }}
       </button>
       <mat-list>
         <mat-list-item
-          *ngFor="let item of levelTwoItems; index as i"
-          (click)="levelTwoSelect(i)"
+          *ngFor="let item of items[0]; index as i"
+          (click)="selectItem(0, i, false)"
           [class.selected]="item.selected"
         >
-          <p>{{ item.name }}</p>
-          <mat-icon>chevron_right</mat-icon>
+          <p>{{ item.id }}</p>
+          <mat-icon class="select-icon">chevron_right</mat-icon>
         </mat-list-item>
       </mat-list>
     </div>
 
-    <!-- andre boks  -->
-    <div class="level">
+    <!-- <ng-container *ngFor="let level of items.length"> </ng-container> -->
+
+    <!-- andre boks, modulær -->
+    <div class="level" *ngIf="boardConfig.depth <= 3 && boardConfig.depth >= 2">
       <div class="name">
-        <mat-icon>{{ boardConfig.levelThreeIcon }}</mat-icon>
-        <p>{{ boardConfig.levelTwoSelectedName }}</p>
+        <mat-icon>{{ boardConfig.icons[1] }}</mat-icon>
+        <p>{{ boardConfig.selectedNames[1] }}</p>
       </div>
       <button mat-button class="header-button">
-        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.levelThreeButton }}
+        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.buttons[2] }}
       </button>
+
+      <!-- liste over blader -->
       <mat-list>
         <mat-list-item
-          *ngFor="let item of levelThreeItems"
+          *ngFor="let item of items[1]; index as i"
           [class.selected]="item.selected"
+          (click)="selectItem(1, i, false)"
         >
           <p>
             {{ item.id }}
           </p>
-          <mat-icon>chevron_right</mat-icon>
+          <mat-icon class="select-icon">chevron_right</mat-icon>
+        </mat-list-item>
+        <!-- liste over greiner -->
+        <mat-list-item
+          *ngFor="let item of arrays[0]; index as i"
+          [class.selected]="item.selected"
+          (click)="selectItem(1, i, true)"
+        >
+          <mat-icon class="array-icon">arrow_right</mat-icon>
+          <p>
+            {{ item.id }}
+          </p>
+          <mat-icon class="select-icon">chevron_right</mat-icon>
         </mat-list-item>
       </mat-list>
     </div>
 
-    <!-- tredje boks -->
-    <div class="level">
+    <!-- andre boks, modulær -->
+    <div class="level" *ngIf="boardConfig.depth <= 4 && boardConfig.depth >= 3">
       <div class="name">
-        <mat-icon>{{ boardConfig.levelFourIcon }}</mat-icon>
-        <p>{{ boardConfig.levelThreeSelectedName }}</p>
+        <mat-icon>{{ boardConfig.icons[2] }}</mat-icon>
+        <p>{{ boardConfig.selectedNames[1] }}</p>
+      </div>
+      <button mat-button class="header-button">
+        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.buttons[2] }}
+      </button>
+
+      <!-- liste over blader -->
+      <mat-list>
+        <mat-list-item
+          *ngFor="let item of items[2]; index as i"
+          [class.selected]="item.selected"
+          (click)="selectItem(2, i, false)"
+        >
+          <p>
+            {{ item.id }}
+          </p>
+          <mat-icon class="select-icon">chevron_right</mat-icon>
+        </mat-list-item>
+        <!-- liste over greiner -->
+        <mat-list-item
+          *ngFor="let item of arrays[1]; index as i"
+          [class.selected]="item.selected"
+          (click)="selectItem(2, 1, true)"
+        >
+          <mat-icon class="array-icon">arrow_right</mat-icon>
+          <p>
+            {{ item.id }}
+          </p>
+          <mat-icon class="select-icon">chevron_right</mat-icon>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <!-- Detail View -->
+    <div class="level detail-view" *ngIf="boardConfig.showDetailView">
+      <div class="name">
+        <mat-icon>{{ boardConfig.icons[3] }}</mat-icon>
+        <p>{{ boardConfig.selectedNames[3] }}</p>
       </div>
       <!-- Liste med key-values -->
       <mat-list>
         <npx-fire-ui-key-value-pair
-          *ngFor="let kv of levelFourItem"
+          *ngFor="let kv of detailData.keyValuePairs"
           cdkOverlayOrigin
           #trigger="cdkOverlayOrigin"
           (click)="toggle(trigger, kv)"
@@ -71,7 +134,7 @@
       </mat-list>
       <!-- Liste med lister -->
       <mat-list>
-        <ng-container *ngFor="let array of levelFourArrays; index as i">
+        <ng-container *ngFor="let array of detailData.arrays; index as i">
           <!-- header med antall -->
           <mat-list-item class="array-parent" (click)="toggleOpen(i)">
             <mat-icon>

@@ -7,10 +7,10 @@ mat-card {
   padding: 0;
 
   &.handset {
-    .level:not(:last-of-type) {
+    .level {
       width: 50%;
     }
-    .level:last-of-type {
+    .level.detail-view {
       display: none;
     }
   }
@@ -138,15 +138,20 @@ mat-card {
   }
 }
 
-.level:not(:last-of-type) {
+.level:not(.detail-view) {
   width: 27%;
   mat-list mat-list-item {
-    mat-icon {
+    .select-icon {
       position: absolute;
       top: 4px;
       right: 4px;
       opacity: 0;
       transition: opacity ease-in 0.2s;
+    }
+    .array-icon {
+      position: absolute;
+      top: 4px;
+      left: 8px;
     }
     &.selected {
       mat-icon {
@@ -161,7 +166,7 @@ mat-card {
   }
 }
 
-.level:last-of-type {
+.level.detail-view {
   flex-grow: 1;
 
   .delete-icon {
@@ -180,9 +185,6 @@ mat-card {
   }
   mat-list:first-of-type {
     padding-top: 12px;
-  }
-  mat-list:last-of-type {
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
   }
 }
 .add-button {

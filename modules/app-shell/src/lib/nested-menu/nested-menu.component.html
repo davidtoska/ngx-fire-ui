@@ -40,7 +40,6 @@
     </div>
 
     <ng-container *ngFor="let level of items; index as l">
-      <!-- andre boks, modulær -->
       <div
         class="level"
         *ngIf="boardConfig.depth <= l + 3 && boardConfig.depth >= l + 2"
@@ -80,40 +79,6 @@
         </mat-list>
       </div>
     </ng-container>
-
-    <!-- <div class="level" *ngIf="boardConfig.depth <= 4 && boardConfig.depth >= 3">
-      <div class="name">
-        <mat-icon>{{ boardConfig.icons[2] }}</mat-icon>
-        <p>{{ boardConfig.selectedNames[1] }}</p>
-      </div>
-      <button mat-button class="header-button">
-        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.buttons[2] }}
-      </button>
-
-      <mat-list>
-        <mat-list-item
-          *ngFor="let item of items[2]; index as i"
-          [class.selected]="item.selected"
-          (click)="selectItem(2, i, false)"
-        >
-          <p>
-            {{ item.id }}
-          </p>
-          <mat-icon class="select-icon">chevron_right</mat-icon>
-        </mat-list-item>
-        <mat-list-item
-          *ngFor="let item of arrays[1]; index as i"
-          [class.selected]="item.selected"
-          (click)="selectItem(2, 1, true)"
-        >
-          <mat-icon class="array-icon">arrow_right</mat-icon>
-          <p>
-            {{ item.id }}
-          </p>
-          <mat-icon class="select-icon">chevron_right</mat-icon>
-        </mat-list-item>
-      </mat-list>
-    </div> -->
 
     <!-- Detail View -->
     <div class="level detail-view" *ngIf="boardConfig.showDetailView">

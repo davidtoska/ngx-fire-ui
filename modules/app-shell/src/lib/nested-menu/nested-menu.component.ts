@@ -200,7 +200,9 @@ export class NestedMenuComponent implements OnInit {
     const indexRef = this.selectedIndexes[level];
 
     this.deselectCurrent(level);
-
+    if (level + 2 === this.boardConfig.depth) {
+      this.deselectCurrent(level + 1);
+    }
     if (
       indexRef.hasSelected === true &&
       indexRef.array === isArray &&

@@ -145,6 +145,9 @@ export class NestedMenuComponent implements OnInit {
   }
 
   setDepth(d: number) {
+    if (d === 1) {
+      this.boardConfig.depth = 1;
+    }
     this.boardConfig.depth = d;
     console.log(this.boardConfig.depth);
   }
@@ -208,6 +211,7 @@ export class NestedMenuComponent implements OnInit {
       indexRef.array === isArray &&
       indexRef.index === i
     ) {
+      this.deselectCurrent(level + 1);
       indexRef.hasSelected = false;
       this.setDepth(level + 1);
       this.showDetailView(false);
@@ -228,115 +232,7 @@ export class NestedMenuComponent implements OnInit {
       this.showDetailView(false);
       this.setDepth(level + 2);
     }
-
-    // this.setDepth(level + 2);
-
-    // if (this.itemIsCurrentlySelected(level, i) === true) {
-    //   if (isArray === true) {
-    //     this.deselectCurrentArray(level);
-    //     this.setDepth(level);
-    //   }
-    // }
-    // if (this.itemIsCurrentlySelected(level, i) === false) {
-    //   this.deselectCurrentArray(level);
-    //   this.deselectCurrentItem(level);
-    //   this.selectNewItem(level, i, isArray);
-    //   this.boardConfig.selectedIndexes[level] = i;
-
-    //   this.setDepth(level + 1);
-    // }
-
-    // console.log(this.boardConfig.selectedIndexes[level]);
-    // if (level === 1) {
-    //   if (this.boardConfig.selectedIndexes[level] === i && this.depth > 1) {
-    //     this.items[level][i].selected = false;
-    //     this.boardConfig.selectedIndexes[level] = null;
-    //     console.log(this.boardConfig.selectedIndexes[level]);
-    //     this.setDepth(1);
-    //   } else {
-    //     this.items[level - 1][
-    //       this.boardConfig.selectedIndexes[level - 1]
-    //     ].selected = false;
-    //     this.boardConfig.selectedIndexes[level - i] = i;
-    //     this.items[level - 1][i].selected = true;
-    //     this.setDepth(2);
-    //   }
-    // }
-    // if (i === this.boardConfig.selectedIndexes[level - 1]) {
-    //   if (this.detailView === true) {
-    //     this.showDetailView(false);
-    //   }
-    //   this.items[level - 1][
-    //     this.boardConfig.selectedIndexes[level - 1]
-    //   ].selected = false;
-    //   this.boardConfig.selectedNames[level - 1] = '';
-    //   this.setDepth(level);
-    //   return;
-    // }
-    // this.items[level - 1][
-    //   this.boardConfig.selectedIndexes[level]
-    // ].selected = false;
-    // this.items[level][i].selected = true;
-    // this.boardConfig.selectedIndexes[level] = i;
-    // this.boardConfig.selectedNames[level] = this.items[level][i].id;
-    // if (level === 1) {
-    //   this.setDepth(level + 1);
-    // } else {
-    //   this.showDetailView(true);
-    // }
   }
-
-  // dOneSelect(i: number) {
-  //   if (i === this.boardConfig.levelOneSelectedIndex && this.depth > 1) {
-  //     this.levelOneItems[
-  //       this.boardConfig.levelOneSelectedIndex
-  //     ].selected = false;
-  //     this.boardConfig.levelOneSelectedName = '';
-  //     this.setDepth(1);
-  //     return;
-  //   }
-  //   this.levelOneItems[this.boardConfig.levelOneSelectedIndex].selected = false;
-  //   this.levelOneItems[i].selected = true;
-  //   this.boardConfig.levelOneSelectedIndex = i;
-  //   this.boardConfig.levelOneSelectedName = this.levelOneItems[i].name;
-  //   this.setDepth(2);
-  // }
-
-  // dTwoItemSelect(i: number) {
-  //   if (i === this.levelTwoIndex && this.depth > 2) {
-  //     this.setDepth(2);
-  //     this.boardConfig.levelTwoSelectedName = '';
-  //     this.levelTwoItems[this.levelTwoIndex].selected = false;
-  //     this.showDetailView(false);
-  //     return;
-  //   } else if (i === this.levelTwoIndex && this.detailView === true) {
-  //     this.boardConfig.levelTwoSelectedName = '';
-  //     this.levelTwoItems[this.levelTwoIndex].selected = false;
-  //     this.showDetailView(false);
-  //   } else {
-  //     this.levelTwoItems[this.levelTwoIndex].selected = false;
-  //     this.levelTwoItems[i].selected = true;
-  //     this.boardConfig.levelTwoSelectedIndex = i;
-  //     this.boardConfig.levelTwoSelectedName = this.levelTwoItems[i].id;
-  //     this.showDetailView(true);
-  //   }
-  // }
-  // dTwoArraySelect(i: number) {
-  //   if (this.levelTwoArrays[i].selected === true) {
-  //     this.levelTwoArrays[i].selected = false;
-  //     this.setDepth(2);
-  //     return;
-  //   }
-  //   this.levelTwoArrays[i].selected = true;
-  //   this.setDepth(3);
-  // }
-
-  // levelTwoSelect(i: number) {
-  //   this.levelTwoItems[this.boardConfig.levelTwoSelectedIndex].selected = false;
-  //   this.levelTwoItems[i].selected = true;
-  //   this.boardConfig.levelTwoSelectedIndex = i;
-  //   this.boardConfig.levelTwoSelectedName = this.levelTwoItems[i].name;
-  // }
   toggleOpen(i: number) {
     this.detailData.arrays[i].open = !this.detailData.arrays[i].open;
   }

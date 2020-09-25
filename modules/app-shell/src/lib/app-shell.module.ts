@@ -23,7 +23,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TabsComponent } from './tabs/tabs.component';
 import { MatRippleModule } from '@angular/material/core';
-import { OverlayModule } from '@angular/cdk/overlay';
 import { NestedMenuModule } from './nested-menu/nested-menu.module';
 import { NestedMenuComponent } from './nested-menu/nested-menu.component';
 /**
@@ -55,7 +54,6 @@ export const appShellRoutes: Route[] = [];
     MatCardModule,
     MatTabsModule,
     MatRippleModule,
-    OverlayModule,
     NestedMenuModule,
   ],
   declarations: [

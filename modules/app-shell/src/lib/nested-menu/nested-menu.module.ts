@@ -27,5 +27,10 @@ import { MatButtonModule } from '@angular/material/button';
     KeyValueEditorComponent,
     KeyValuePairComponent,
   ],
+  exports: [
+    NestedMenuComponent,
+    KeyValueEditorComponent,
+    KeyValuePairComponent,
+  ],
 })
 export class NestedMenuModule {}

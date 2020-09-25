@@ -12,6 +12,7 @@ import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
 import { Component1Component } from './component1/component1.component';
+import { NestedMenuModule } from '@ngx-fire-ui/app-shell';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { Component1Component } from './component1/component1.component';
       { initialNavigation: 'enabled' }
     ),
     BrowserAnimationsModule,
+    NestedMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

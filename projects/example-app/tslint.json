@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "npxFireUi", "camelCase"],
-    "component-selector": [true, "element", "npx-fire-ui", "kebab-case"]
+    "directive-selector": [true, "attribute", "ngxFireUi", "camelCase"],
+    "component-selector": [true, "element", "ngx-fire-ui", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]

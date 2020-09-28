@@ -25,6 +25,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { MatRippleModule } from '@angular/material/core';
 import { NestedMenuModule } from './nested-menu/nested-menu.module';
 import { NestedMenuComponent } from './nested-menu/nested-menu.component';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
@@ -55,6 +56,7 @@ export const appShellRoutes: Route[] = [];
     MatTabsModule,
     MatRippleModule,
     NestedMenuModule,
+    DynamicFormModule,
   ],
   declarations: [
     AppShellComponent,

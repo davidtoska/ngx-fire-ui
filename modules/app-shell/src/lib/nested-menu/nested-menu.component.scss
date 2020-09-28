@@ -3,21 +3,21 @@ $color-text-grey: rgba(0, 0, 0, 0.54);
 $color-text-dark: rgba(0, 0, 0, 0.87);
 $color-text-accent: #1a73e8;
 
-// @keyframes initialhide {
-//   0% {
-//     opacity: 1;
-//     width: 27%;
-//     background-color: red;
-//   }
-//   1% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 0;
-//     width: 0;
-//     background-color: red;
-//   }
-// }
+@keyframes initialhide {
+  0% {
+    opacity: 1;
+    width: 27%;
+    background-color: red;
+  }
+  1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+    background-color: red;
+  }
+}
 
 @keyframes hidelevel {
   0% {

@@ -3,14 +3,66 @@ $color-text-grey: rgba(0, 0, 0, 0.54);
 $color-text-dark: rgba(0, 0, 0, 0.87);
 $color-text-accent: #1a73e8;
 
+@keyframes initialhide {
+  0% {
+    opacity: 1;
+    width: 27%;
+    background-color: red;
+  }
+  1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+    background-color: red;
+  }
+}
+
+@keyframes hidelevel {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    // transform: translateX(-18%);
+    opacity: 0;
+    // width: 15%;
+  }
+
+  100% {
+    transform: translateX(-27%);
+    opacity: 0;
+    width: 0;
+  }
+}
+@keyframes showlevel {
+  0% {
+    transform: translateX(-27%);
+    opacity: 0;
+    width: 0;
+  }
+  // width: 15%;
+  // opacity: 0.5;
+  // 1% {
+  //   transform: translateX(-100%);
+  //   opacity: 0;
+  // }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    width: 27%;
+  }
+}
+
 mat-card {
   padding: 0;
 
   &.handset {
-    .level:not(:last-of-type) {
+    .level {
       width: 50%;
     }
-    .level:last-of-type {
+    .level.detail-view {
       display: none;
     }
   }
@@ -57,6 +109,7 @@ mat-card {
 
 .levels {
   display: flex;
+  overflow: hidden;
 }
 
 .level {
@@ -66,6 +119,7 @@ mat-card {
   max-height: 600px;
   overflow-y: auto;
   box-shadow: -1px 0 0 rgba(0, 0, 0, 0.12) inset;
+  transition: all, 0.25s;
 
   .name {
     padding: 0 16px;
@@ -138,15 +192,20 @@ mat-card {
   }
 }
 
-.level:not(:last-of-type) {
+.level:not(.detail-view) {
   width: 27%;
   mat-list mat-list-item {
-    mat-icon {
+    .select-icon {
       position: absolute;
       top: 4px;
       right: 4px;
       opacity: 0;
       transition: opacity ease-in 0.2s;
+    }
+    .array-icon {
+      position: absolute;
+      top: 4px;
+      left: 8px;
     }
     &.selected {
       mat-icon {
@@ -161,7 +220,7 @@ mat-card {
   }
 }
 
-.level:last-of-type {
+.level.detail-view {
   flex-grow: 1;
 
   .delete-icon {
@@ -181,13 +240,24 @@ mat-card {
   mat-list:first-of-type {
     padding-top: 12px;
   }
-  mat-list:last-of-type {
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
-  }
 }
 .add-button {
   margin-left: 22px;
   color: $color-text-accent;
+}
+
+.level.hide {
+  animation-name: hidelevel;
+  animation-fill-mode: forwards;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  // animation-delay: 2s;
+}
+.level.show {
+  animation-name: showlevel;
+  animation-fill-mode: forwards;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
 }
 
 // Utility classes

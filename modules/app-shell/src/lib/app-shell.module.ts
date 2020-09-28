@@ -22,12 +22,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TabsComponent } from './tabs/tabs.component';
-import { NestedMenuComponent } from './nested-menu/nested-menu.component';
 import { MatRippleModule } from '@angular/material/core';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { KeyValuePairComponent } from './nested-menu/key-value-pair/key-value-pair.component';
-import { KeyValueEditorComponent } from './nested-menu/key-value-editor/key-value-editor.component';
-
+import { NestedMenuModule } from './nested-menu/nested-menu.module';
+import { NestedMenuComponent } from './nested-menu/nested-menu.component';
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
@@ -57,7 +54,7 @@ export const appShellRoutes: Route[] = [];
     MatCardModule,
     MatTabsModule,
     MatRippleModule,
-    OverlayModule,
+    NestedMenuModule,
   ],
   declarations: [
     AppShellComponent,
@@ -67,16 +64,8 @@ export const appShellRoutes: Route[] = [];
     LoginPageComponent,
     NewContextModalComponent,
     TabsComponent,
-    NestedMenuComponent,
-    KeyValuePairComponent,
-    KeyValueEditorComponent,
   ],
-  exports: [
-    AppShellComponent,
-    LoginComponent,
-    TabsComponent,
-    NestedMenuComponent,
-  ],
+  exports: [AppShellComponent, LoginComponent, TabsComponent],
   entryComponents: [NewContextModalComponent],
 })
 export class AppShellModule {

@@ -19,8 +19,13 @@ import { NewContextModalComponent } from './new-context-modal/new-context-modal.
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TabsComponent } from './tabs/tabs.component';
+import { MatRippleModule } from '@angular/material/core';
+import { NestedMenuModule } from './nested-menu/nested-menu.module';
+import { NestedMenuComponent } from './nested-menu/nested-menu.component';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
-
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
@@ -47,6 +52,10 @@ export const appShellRoutes: Route[] = [];
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
+    MatTabsModule,
+    MatRippleModule,
+    NestedMenuModule,
     DynamicFormModule,
   ],
   declarations: [
@@ -56,8 +65,9 @@ export const appShellRoutes: Route[] = [];
     ContextMenuPageComponent,
     LoginPageComponent,
     NewContextModalComponent,
+    TabsComponent,
   ],
-  exports: [AppShellComponent, LoginComponent],
+  exports: [AppShellComponent, LoginComponent, TabsComponent],
   entryComponents: [NewContextModalComponent],
 })
 export class AppShellModule {

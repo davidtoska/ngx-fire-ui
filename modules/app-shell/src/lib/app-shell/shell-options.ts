@@ -7,6 +7,7 @@ export const defaulOptions: AppShellOptions = {
   wheelMenu: true,
   contextMenu: true,
 };
+
 export interface AppShellOptions {
   menuItems: MenuItem[];
   iconUrl: string;

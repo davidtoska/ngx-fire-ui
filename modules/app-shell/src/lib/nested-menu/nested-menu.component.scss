@@ -1,0 +1,278 @@
+$color-grey-primary: #fafafa;
+$color-text-grey: rgba(0, 0, 0, 0.54);
+$color-text-dark: rgba(0, 0, 0, 0.87);
+$color-text-accent: #1a73e8;
+
+@keyframes initialhide {
+  0% {
+    opacity: 1;
+    width: 27%;
+    background-color: red;
+  }
+  1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+    background-color: red;
+  }
+}
+
+@keyframes hidelevel {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    // transform: translateX(-18%);
+    opacity: 0;
+    // width: 15%;
+  }
+
+  100% {
+    transform: translateX(-27%);
+    opacity: 0;
+    width: 0;
+  }
+}
+@keyframes showlevel {
+  0% {
+    transform: translateX(-27%);
+    opacity: 0;
+    width: 0;
+  }
+  // width: 15%;
+  // opacity: 0.5;
+  // 1% {
+  //   transform: translateX(-100%);
+  //   opacity: 0;
+  // }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    width: 27%;
+  }
+}
+
+mat-card {
+  padding: 0;
+
+  &.handset {
+    .level {
+      width: 50%;
+    }
+    .level.detail-view {
+      display: none;
+    }
+  }
+}
+
+.breadcrumbs,
+.name {
+  background-color: $color-grey-primary;
+  color: $color-text-grey;
+  align-items: center;
+  display: flex;
+}
+
+.breadcrumbs {
+  padding: 16px;
+  box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.12) inset,
+    0px -1px 2px rgba(0, 0, 0, 0.05);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+
+  button {
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+  }
+
+  mat-icon:not(:first-of-type) {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+    margin: 0 6px;
+  }
+
+  p {
+    margin: 0 0 -1px;
+    &:hover {
+      cursor: pointer;
+      color: $color-text-accent;
+      text-decoration: underline;
+      text-decoration-color: $color-text-accent;
+    }
+  }
+}
+
+.levels {
+  display: flex;
+  overflow: hidden;
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.12) inset;
+  transition: all, 0.25s;
+
+  .name {
+    padding: 0 16px;
+    // height: 44px;
+    min-height: 44px;
+    box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.12) inset;
+
+    p {
+      margin: 1px 0 0 8px;
+    }
+  }
+  .header-button {
+    color: $color-text-accent;
+    letter-spacing: 0.25px;
+    text-align: left;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 0;
+  }
+  mat-list {
+    padding: 0;
+
+    .array-parent p {
+      padding-left: 0;
+    }
+    .array-sub-parent {
+      .open-icon {
+        padding-left: 28px;
+      }
+      p {
+        padding-left: 5px;
+        background-color: rgba(0, 0, 0, 0.08);
+        height: 20px;
+        line-height: 20px;
+        min-width: 16px;
+        font-family: 'Roboto Mono', monospace;
+      }
+    }
+    .array-child p {
+      padding-left: 56px;
+    }
+  }
+
+  mat-list-item {
+    height: 32px;
+    color: $color-text-grey;
+    cursor: pointer;
+
+    p {
+      padding-left: 28px;
+      margin: 0;
+      // font-family: 'Roboto Mono', monospace !important;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &::-webkit-scrollbar {
+    background-color: #fff;
+    width: 4px;
+    background-clip: padding-box;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background-clip: padding-box;
+  }
+}
+
+.level:not(.detail-view) {
+  width: 27%;
+  mat-list mat-list-item {
+    .select-icon {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      opacity: 0;
+      transition: opacity ease-in 0.2s;
+    }
+    .array-icon {
+      position: absolute;
+      top: 4px;
+      left: 8px;
+    }
+    &.selected {
+      mat-icon {
+        opacity: 1;
+      }
+    }
+    &:hover,
+    &.selected {
+      background-color: rgba(0, 0, 0, 0.08);
+      color: $color-text-dark;
+    }
+  }
+}
+
+.level.detail-view {
+  flex-grow: 1;
+
+  .delete-icon {
+    opacity: 0;
+  }
+  mat-list-item:hover {
+    background-color: #f5f5f5;
+
+    .delete-icon {
+      opacity: 1;
+    }
+  }
+  mat-divider {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  mat-list:first-of-type {
+    padding-top: 12px;
+  }
+}
+.add-button {
+  margin-left: 22px;
+  color: $color-text-accent;
+}
+
+.level.hide {
+  animation-name: hidelevel;
+  animation-fill-mode: forwards;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  // animation-delay: 2s;
+}
+.level.show {
+  animation-name: showlevel;
+  animation-fill-mode: forwards;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+}
+
+// Utility classes
+
+.divider {
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12) inset;
+}
+.spacer {
+  flex-grow: 1;
+}
+
+::ng-deep {
+  .no-hover-effect.mat-button.mat-primary .mat-button-focus-overlay,
+  .no-hover-effect.mat-button.mat-accent .mat-button-focus-overlay,
+  .no-hover-effect.mat-button.mat-warn .mat-button-focus-overlay {
+    background-color: transparent;
+  }
+}

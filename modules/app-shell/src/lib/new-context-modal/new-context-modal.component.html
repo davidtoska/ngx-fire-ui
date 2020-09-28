@@ -1,38 +1,42 @@
 <mat-sidenav-container>
   <mat-sidenav
-    class="sidenav create-context-dialog-scroll-container"
-    #drawer
+    class="sidenav"
+    #contextDrawer
     [opened]="true"
     fixedInViewport
     [class.hide]="hideModal"
     (keyup.Escape)="closeDialogHandler()"
     [class.handset]="!handset$"
   >
-    <div class="create-context-header">
-      <button mat-icon-button (click)="closeDialogHandler()">
-        <mat-icon>close</mat-icon>
-      </button>
-      <div class="create-project-title">
-        Create a Context <span>(Step 1 of 3)</span>
-      </div>
-    </div>
-    <div class="create-context-sidebar"></div>
+    <div class="sidebar"></div>
 
-    <div class="create-context-content">
-      <!-- Todo: Få dette i en egen komponent -->
-      <h1>Gi et navn til den nye contexten din</h1>
+    <div class="content">
+      <div class="header">
+        <button mat-icon-button (click)="closeDialogHandler()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <p>Create a Context <span>(Step 2 of 3)</span></p>
+      </div>
+
+      <h1>Legg til administrator</h1>
+
       <mat-form-field>
-        <mat-label>Context navn</mat-label>
+        <mat-label>Navn</mat-label>
         <input
           matInput
           type="text"
-          placeholder="Skriv inn context navnet"
-          cdkFocusInitial
+          placeholder="Skriv inn administratorens navn"
           (keyup.enter)="closeDialogHandler()"
+          cdkFocusInitial
         />
       </mat-form-field>
-      <button mat-flat-button color="primary">
-        Ferdig
+      <button
+        mat-flat-button
+        color="primary"
+        class="continue-button"
+        (click)="closeDialogHandler()"
+      >
+        Neste
       </button>
     </div>
   </mat-sidenav>

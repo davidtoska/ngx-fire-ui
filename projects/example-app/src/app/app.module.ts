@@ -15,8 +15,12 @@ import { OrganisationsPageComponent } from './organisations-page/organisations-p
 import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
+
+import { Component1Component } from './component1/component1.component';
+import { NestedMenuModule } from '@ngx-fire-ui/app-shell';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +28,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     OrganisationsPageComponent,
     HomePageComponent,
     EmployeesPageComponent,
+    Component1Component,
     OrderFormComponent,
   ],
   imports: [
@@ -44,6 +49,21 @@ import { MatGridListModule } from '@angular/material/grid-list';
             {
               path: URLS.organisations,
               component: OrganisationsPageComponent,
+              children: [
+                {
+                  path: '',
+                  redirectTo: URLS.organisationsFirst,
+                  pathMatch: 'full',
+                },
+                {
+                  path: URLS.organisationsFirst,
+                  component: Component1Component,
+                },
+                {
+                  path: 'second',
+                  component: Component1Component,
+                },
+              ],
             },
             {
               path: URLS.orders,
@@ -64,6 +84,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
       { initialNavigation: 'enabled' }
     ),
     BrowserAnimationsModule,
+    NestedMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

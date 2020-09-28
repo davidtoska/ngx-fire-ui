@@ -1,0 +1,18 @@
+<nav mat-tab-nav-bar [disableRipple]="true">
+  <a
+    mat-tab-link
+    *ngFor="let link of navLinks"
+    [routerLink]="link.route"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+  >
+    {{ link.label }}
+  </a>
+</nav>
+<mat-divider></mat-divider>
+<router-outlet></router-outlet>
+<!-- <div class="tab-page">
+  <div class="inner-page">
+  </div>
+</div> -->

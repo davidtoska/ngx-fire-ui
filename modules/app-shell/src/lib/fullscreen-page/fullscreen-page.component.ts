@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fullscreen-page.component.scss'],
 })
 export class FullscreenPageComponent implements OnInit {
+  handset$ = false;
   constructor() {}
 
   ngOnInit(): void {}

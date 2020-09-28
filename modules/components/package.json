@@ -1,5 +1,5 @@
 {
-  "name": "@ngx-fire-ui/core",
+  "name": "@ngx-fire-ui/components",
   "version": "0.0.15",
   "peerDependencies": {
     "@angular/common": "^10.0.14",

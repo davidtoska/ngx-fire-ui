@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+import { StoreSync } from '@ngx-fire-ui/core';
+import { BasePage } from 'modules/app-shell/src/lib/base-page.component';
 
 @Component({
-  selector: 'npx-fire-ui-employees-page',
+  selector: 'ngx-fire-ui-employees-page',
   templateUrl: './employees-page.component.html',
-  styleUrls: ['./employees-page.component.scss']
+  styleUrls: ['./employees-page.component.scss'],
 })
-export class EmployeesPageComponent implements OnInit {
+export class EmployeesPageComponent extends BasePage implements OnInit {
+  pageId = 'Employees';
+  ui = new StoreSync({ isselected: false });
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(protected readonly injector: Injector) {
+    super(injector);
   }
 
+  ngOnInit(): void {
+    super.ngOnInit();
+    console.log('[Employees Page]' + this.ui.state.isselected);
+  }
 }

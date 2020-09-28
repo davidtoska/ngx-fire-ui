@@ -1,5 +1,5 @@
 {
-  "npmScope": "npx-fire-ui",
+  "npmScope": "ngx-fire-ui",
   "affected": {
     "defaultBase": "master"
   },

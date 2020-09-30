@@ -9,17 +9,31 @@
       "$default": {
         "$source": "argv",
         "index": 0
+      },
+      "x-prompt": {
+        "message": "Name of your component",
+        "type": "string"
       }
     },
-    "service": {
-      "type": "boolean",
-      "description": "Add an app for the domain?",
-      "default": true
-    },
-    "builder": {
-      "type": "boolean",
-      "description": "Add a builder"
+
+    "kind": {
+      "type": "string",
+      "description": "What kind of component do you want?",
+      "x-prompt": {
+        "message": "What type of component do you want?",
+        "type": "list",
+        "items": [
+          {
+            "value": "builder",
+            "label": "With builder"
+          },
+          {
+            "value": "nobuilder",
+            "label": "No builder"
+          }
+        ]
+      }
     }
   },
-  "required": ["name", "builder"]
+  "required": ["name", "kind"]
 }

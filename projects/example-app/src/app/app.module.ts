@@ -10,7 +10,7 @@ import {
   DynamicFormModule,
 } from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppShellOptions, appShellRoutes } from '@ngx-fire-ui/app-shell';
+import { appShellRoutes } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -20,7 +20,6 @@ import { Component1Component } from './component1/component1.component';
 import { NestedMenuModule } from '@ngx-fire-ui/app-shell';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-
 
 @NgModule({
   declarations: [

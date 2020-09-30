@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { Tab } from '@ngx-fire-ui/app-shell';
 import { Component, Injector, OnInit } from '@angular/core';
 import { StoreSync } from '@ngx-fire-ui/core';

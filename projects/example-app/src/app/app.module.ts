@@ -10,7 +10,6 @@ import {
   DynamicFormModule,
 } from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ROUTES } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -68,13 +67,13 @@ import { FullscreenLandingpageComponent } from './fullscreen-landingpage/fullscr
               path: URLS.jsonEditor,
               component: JsonEditorComponent,
             },
-
-            {
-              path: URLS.fullScreenPage,
-              component: FullscreenLandingpageComponent,
-            },
           ],
         },
+        {
+          path: URLS.fullScreenPage,
+          component: FullscreenLandingpageComponent,
+        },
+
         {
           path: '**',
           redirectTo: 'home',

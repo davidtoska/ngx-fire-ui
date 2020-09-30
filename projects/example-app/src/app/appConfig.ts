@@ -1,14 +1,12 @@
-// import { AppShellOptions } from 'modules/app-shell/src/lib/app-shell/shell-options';
-import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
-import { Tab } from '@ngx-fire-ui/app-shell';
 import { AppShellOptions, MenuItem } from '@ngx-fire-ui/app-shell';
 
 export const URLS = {
   home: 'home',
   organisations: 'organisations',
   employees: 'employees',
-  organisationsFirst: 'first',
-  orders: 'orders',
+  dynamicForms: 'dynamic-forms',
+  jsonEditor: 'json-editor',
+  fullScreenPage: 'fullscreen-page',
 };
 
 const organisasjoner = {
@@ -23,15 +21,27 @@ const ansatte = {
 };
 
 const orders: MenuItem = {
-  route: URLS.orders,
-  label: 'Orders',
+  route: URLS.dynamicForms,
+  label: 'Dynamic forms',
   icon: 'shopping_cart',
 };
 
+const editor: MenuItem = {
+  route: URLS.jsonEditor,
+  label: 'Json editor',
+  icon: 'topic',
+};
+
+const fullScreenLandingPage: MenuItem = {
+  route: URLS.fullScreenPage,
+  label: 'Fullscreen page',
+  icon: 'topic',
+};
 export const shellOptions: AppShellOptions = {
   wheelMenu: true,
   contextMenu: true,
   homeUrl: URLS.home,
-  iconUrl: 'assets/tvicon.svg',
-  menuItems: [organisasjoner, ansatte, orders],
+  brandIconUrl: 'assets/tvicon.svg',
+  brandName: 'Example brand',
+  menuItems: [organisasjoner, ansatte, orders, editor, fullScreenLandingPage],
 };

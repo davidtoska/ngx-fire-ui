@@ -19,7 +19,7 @@ import {
   defaulOptions,
   MenuItem,
 } from './shell-options';
-import { NewContextModalComponent } from '../new-context-modal/new-context-modal.component';
+// import { NewContextModalComponent } from '../new-context-modal/new-context-modal.component';
 import { AuthService } from '../services/auth.service';
 import { LayoutService } from '../services/layout.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -69,6 +69,8 @@ export class AppShellComponent implements OnInit {
     this.authService.isLoggedId$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
+
+    this.options = { ...this.appOptions };
   }
 
   ngOnInit(): void {
@@ -78,14 +80,13 @@ export class AppShellComponent implements OnInit {
     });
   }
   openDialog() {
-    const dialogRef = this.dialog.open(NewContextModalComponent, {
-      panelClass: ['new-context-modal'],
-      disableClose: true,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // const dialogRef = this.dialog.open(NewContextModalComponent, {
+    //   panelClass: ['new-context-modal'],
+    //   disableClose: true,
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
   onLogout() {
     this.authService.logOut();
@@ -105,11 +106,6 @@ export class AppShellComponent implements OnInit {
     if (!ev.pageId) {
       console.error('Every page needs to extend base-page');
     }
-
-    // Maybe use a message-buss for shell-page communisations??
-    ev.getPageLifecycleSubscriptionForAppShell().subscribe((lifecy) => {
-      console.log(lifecy);
-    });
 
     if (!ev.__is__initialized) {
       console.log(ev.__is__initialized);

@@ -32,6 +32,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
+    // FormsModule,
   ],
   exports: [FormFieldComponent, FormComponent],
 })

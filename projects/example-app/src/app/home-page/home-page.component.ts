@@ -1,6 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { StoreSync } from '@ngx-fire-ui/core';
-import { BasePage } from 'modules/app-shell/src/lib/base-page.component';
+import { BasePage } from '@ngx-fire-ui/app-shell';
 
 @Component({
   selector: 'ngx-fire-ui-home-page',

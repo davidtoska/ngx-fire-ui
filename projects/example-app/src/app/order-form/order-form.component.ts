@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { BasePage } from 'modules/app-shell/src/lib/base-page.component';
 import { StoreSync } from '@ngx-fire-ui/core';
 import { FieldType, Field, SimpleFormBuilder } from '@ngx-fire-ui/app-shell';
@@ -8,7 +8,7 @@ import { FieldType, Field, SimpleFormBuilder } from '@ngx-fire-ui/app-shell';
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss'],
 })
-export class OrderFormComponent extends BasePage implements OnInit {
+export class OrderFormComponent extends BasePage implements OnInit, OnDestroy {
   pageId = 'Place your order';
 
   formBuilder = new SimpleFormBuilder({
@@ -90,5 +90,9 @@ export class OrderFormComponent extends BasePage implements OnInit {
 
   ngOnInit(): void {
     super.ngOnInit();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
   }
 }

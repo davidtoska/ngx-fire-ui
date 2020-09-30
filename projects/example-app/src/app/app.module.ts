@@ -10,16 +10,20 @@ import {
   DynamicFormModule,
 } from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { appShellRoutes } from '@ngx-fire-ui/app-shell';
+import { ROUTES } from '@ngx-fire-ui/app-shell';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { shellOptions, URLS } from './appConfig';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
 
-import { Component1Component } from './component1/component1.component';
-import { NestedMenuModule } from '@ngx-fire-ui/app-shell';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { JsonEditorComponent } from './json-editor/json-editor.component';
+import {
+  FullscreenPageModule,
+  NestedMenuModule,
+} from '@ngx-fire-ui/components';
+import { FullscreenLandingpageComponent } from './fullscreen-landingpage/fullscreen-landingpage.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +31,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
     OrganisationsPageComponent,
     HomePageComponent,
     EmployeesPageComponent,
-    Component1Component,
     OrderFormComponent,
+    JsonEditorComponent,
+    FullscreenLandingpageComponent,
   ],
   imports: [
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
+    FullscreenPageModule,
+    NestedMenuModule,
     DynamicFormModule,
     MatGridListModule,
     RouterModule.forRoot(
@@ -48,31 +55,24 @@ import { MatGridListModule } from '@angular/material/grid-list';
             {
               path: URLS.organisations,
               component: OrganisationsPageComponent,
-              children: [
-                {
-                  path: '',
-                  redirectTo: URLS.organisationsFirst,
-                  pathMatch: 'full',
-                },
-                {
-                  path: URLS.organisationsFirst,
-                  component: Component1Component,
-                },
-                {
-                  path: 'second',
-                  component: Component1Component,
-                },
-              ],
             },
             {
-              path: URLS.orders,
+              path: URLS.dynamicForms,
               component: OrderFormComponent,
             },
             {
               path: URLS.employees,
               component: EmployeesPageComponent,
             },
-            ...appShellRoutes,
+            {
+              path: URLS.jsonEditor,
+              component: JsonEditorComponent,
+            },
+
+            {
+              path: URLS.fullScreenPage,
+              component: FullscreenLandingpageComponent,
+            },
           ],
         },
         {
@@ -83,7 +83,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
       { initialNavigation: 'enabled' }
     ),
     BrowserAnimationsModule,
-    NestedMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

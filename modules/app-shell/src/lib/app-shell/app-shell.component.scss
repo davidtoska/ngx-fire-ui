@@ -32,15 +32,22 @@ mat-toolbar {
 
   .mat-toolbar {
     background: inherit;
-    padding: 10px 20px;
+    // padding: 10px 20px;
     height: 48px;
     position: sticky;
     top: 0;
     z-index: 1;
+    & img {
+      height: 28px;
+    }
+    & h1 {
+      color: $color-text-default;
+      margin-left: 16px;
+    }
   }
   .logo {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     cursor: pointer;
   }

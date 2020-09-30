@@ -1,4 +1,3 @@
-import { Tab } from '@ngx-fire-ui/app-shell';
 import { Component, Injector, OnInit } from '@angular/core';
 import { StoreSync } from '@ngx-fire-ui/core';
 import { BasePage } from 'modules/app-shell/src/lib/base-page.component';
@@ -12,21 +11,6 @@ export class OrganisationsPageComponent extends BasePage implements OnInit {
   pageId = 'Organisations';
   initialized = true;
   ui = new StoreSync({});
-
-  navLinks: Tab[] = [
-    {
-      label: 'First',
-      route: './first',
-    },
-    {
-      label: 'Second',
-      route: './second',
-    },
-    {
-      label: 'Third',
-      route: './third',
-    },
-  ];
 
   constructor(protected readonly injector: Injector) {
     super(injector);

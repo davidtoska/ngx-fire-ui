@@ -10,20 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 import { StoreSync, SubSink } from '@ngx-fire-ui/core';
 import { AuthService } from './services/auth.service';
 import { LayoutService } from './services/layout.service';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-
-interface InternalPageState {
-  isInitialized: boolean;
-  isDestroyed: boolean;
-}
 
 @Directive()
 export abstract class BasePage implements OnInit, OnDestroy {
-  private readonly __internal__store$ = new BehaviorSubject<InternalPageState>(
-    null
-  );
-  private readonly __internal__state$ = this.__internal__store$.asObservable();
-
   public abstract pageId: string;
   public abstract readonly ui: StoreSync;
   public readonly layout = new StoreSync({ isHandset: false });
@@ -64,16 +53,13 @@ export abstract class BasePage implements OnInit, OnDestroy {
     });
 
     this.__is__initialized = true;
-    this.__internal__store$.next({ isInitialized: true, isDestroyed: false });
   }
 
   ngOnDestroy(): void {
     console.log(this.TAG + ' On Destroy.');
   }
 
-  getPageLifecycleSubscriptionForAppShell() {
-    return this.__internal__state$;
-  }
+  getPageLifecycleSubscriptionForAppShell() {}
 
   getPageid() {
     return this.pageId;

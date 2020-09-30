@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Tab } from './tabs.interface';
 
 @Component({
-  selector: 'npx-fire-ui-tabs',
+  selector: 'ngx-fire-ui-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
 })

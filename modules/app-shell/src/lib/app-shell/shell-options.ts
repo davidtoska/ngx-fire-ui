@@ -2,26 +2,27 @@ import { InjectionToken, Type } from '@angular/core';
 
 export const defaulOptions: AppShellOptions = {
   menuItems: [],
-  iconUrl: '',
+  brandIconUrl: '',
+  brandName: 'Default brand name',
   homeUrl: 'home',
   wheelMenu: true,
   contextMenu: true,
 };
 
 export interface AppShellOptions {
-  menuItems: MenuItem[];
-  iconUrl: string;
-  homeUrl: string;
-  wheelMenu: boolean;
-  contextMenu: boolean;
-  contextUrl?: string;
+  readonly menuItems: MenuItem[];
+  readonly brandIconUrl: string;
+  readonly brandName: string;
+  readonly homeUrl: string;
+  readonly wheelMenu: boolean;
+  readonly contextMenu: boolean;
+  // readonly contextUrl?: string;
 }
 
 export class MenuItem {
   route!: string;
   label!: string;
   icon?: string;
-  // customIcons = false;
 }
 
 export const APP_SHELL_OPTIONS = new InjectionToken<MenuItem>(

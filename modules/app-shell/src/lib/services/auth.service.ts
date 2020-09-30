@@ -1,34 +1,38 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { StoreSync } from '@ngx-fire-ui/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+interface AuthState {
+  uid: string;
+  isLoggedIn: boolean;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private state$ = new StoreSync({
+  private readonly store = new BehaviorSubject<AuthState>({
     uid: '',
-    isLoggedin: false,
+    isLoggedIn: false,
   });
+  readonly state$ = this.store.asObservable();
   readonly uid$: Observable<string | null>;
   readonly isLoggedId$: Observable<boolean>;
   constructor() {
-    this.uid$ = this.state$.state$.pipe(map((s) => s.uid));
-    this.isLoggedId$ = this.state$.state$.pipe(map((s) => s.isLoggedin));
+    this.uid$ = this.state$.pipe(map((s) => s.uid));
+    this.isLoggedId$ = this.state$.pipe(map((s) => s.isLoggedIn));
   }
 
   logIn() {
-    this.state$.update({
+    this.store.next({
       uid: 'test-uid',
-      isLoggedin: true,
+      isLoggedIn: true,
     });
   }
 
   logOut() {
-    this.state$.update({
+    this.store.next({
       uid: '',
-      isLoggedin: false,
+      isLoggedIn: false,
     });
   }
 }

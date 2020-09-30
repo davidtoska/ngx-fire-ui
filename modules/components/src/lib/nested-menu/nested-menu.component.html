@@ -1,0 +1,195 @@
+<mat-card>
+  <div class="breadcrumbs">
+    <button mat-icon-button (click)="setDepth(1)">
+      <mat-icon>home</mat-icon>
+    </button>
+    <ng-container *ngIf="boardConfig.depth > 0">
+      <mat-icon>chevron_right</mat-icon>
+      <p>{{ boardConfig.selectedNames[1] }}</p>
+    </ng-container>
+    <ng-container *ngIf="boardConfig.depth > 1">
+      <mat-icon>chevron_right</mat-icon>
+      <p>{{ boardConfig.selectedNames[2] }}</p>
+    </ng-container>
+    <ng-container *ngIf="boardConfig.depth > 2">
+      <mat-icon>chevron_right</mat-icon>
+      <p>{{ boardConfig.selectedNames[3] }}</p>
+    </ng-container>
+  </div>
+
+  <div class="levels">
+    <!-- første boks -->
+    <div
+      class="level hide"
+      [class.hide]="boardConfig.depth != 2 && boardConfig.depth != 1"
+      [class.show]="boardConfig.depth === 2 || boardConfig.depth === 1"
+    >
+      <div class="name">
+        <mat-icon>{{ boardConfig.icons[0] }}</mat-icon>
+        <p>{{ appConfig.contextName }}</p>
+      </div>
+      <button mat-button class="header-button">
+        <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.buttons[0] }}
+      </button>
+      <mat-list>
+        <mat-list-item
+          *ngFor="let item of items[0]; index as i"
+          (click)="selectItem(0, i, false)"
+          [class.selected]="item.selected"
+        >
+          <p>{{ item.id }}</p>
+          <mat-icon class="select-icon">chevron_right</mat-icon>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <ng-container *ngFor="let level of items; index as l">
+      <div
+        class="level middle-levels"
+        [class.hide]="boardConfig.depth != l + 3 && boardConfig.depth != l + 2"
+        [class.show]="
+          boardConfig.depth === l + 3 || boardConfig.depth === l + 2
+        "
+      >
+        <div class="name">
+          <mat-icon>{{ boardConfig.icons[1] }}</mat-icon>
+          <p>{{ boardConfig.selectedNames[1] }}</p>
+        </div>
+        <button mat-button class="header-button">
+          <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.buttons[2] }}
+        </button>
+
+        <!-- liste over blader -->
+        <mat-list>
+          <mat-list-item
+            *ngFor="let item of items[l + 1]; index as i"
+            [class.selected]="item.selected"
+            (click)="selectItem(l + 1, i, false)"
+          >
+            <p>
+              {{ item.id }}
+            </p>
+            <mat-icon class="select-icon">chevron_right</mat-icon>
+          </mat-list-item>
+          <!-- liste over greiner -->
+          <mat-list-item
+            *ngFor="let item of arrays[l]; index as i"
+            [class.selected]="item.selected"
+            (click)="selectItem(l + 1, i, true)"
+          >
+            <mat-icon class="array-icon">arrow_right</mat-icon>
+            <p>
+              {{ item.id }}
+            </p>
+            <mat-icon class="select-icon">chevron_right</mat-icon>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </ng-container>
+
+    <!-- Detail View -->
+    <div class="level detail-view" *ngIf="boardConfig.showDetailView">
+      <div class="name">
+        <mat-icon>{{ boardConfig.icons[3] }}</mat-icon>
+        <p>{{ boardConfig.selectedNames[3] }}</p>
+      </div>
+      <!-- Liste med key-values -->
+      <mat-list>
+        <npx-fire-ui-key-value-pair
+          *ngFor="let kv of detailData.keyValuePairs"
+          cdkOverlayOrigin
+          #trigger="cdkOverlayOrigin"
+          (click)="toggle(trigger, kv)"
+          [keyValue]="kv"
+        >
+        </npx-fire-ui-key-value-pair>
+      </mat-list>
+      <!-- Liste med lister -->
+      <mat-list>
+        <ng-container *ngFor="let array of detailData.arrays; index as i">
+          <!-- header med antall -->
+          <mat-list-item class="array-parent" (click)="toggleOpen(i)">
+            <mat-icon>
+              {{ array.open ? 'arrow_drop_down' : 'arrow_right' }}
+            </mat-icon>
+            <p>
+              {{ array.label }}
+              <span>:&nbsp; {{ array.children.length }}</span>
+            </p>
+            <div class="spacer"></div>
+            <button
+              mat-icon-button
+              (click)="addListItemWithToggle(i)"
+              color="primary"
+              class="add-button"
+            >
+              <mat-icon class="add-icon">add</mat-icon>
+            </button>
+          </mat-list-item>
+
+          <!-- liste med sub-headers som inkluderer nummeret sitt -->
+          <ng-container *ngIf="array.open">
+            <ng-container *ngFor="let obj of array.children; index as I">
+              <!-- sub-header -->
+              <mat-list-item
+                class="array-sub-parent"
+                (click)="toggleSubParent(i, I)"
+              >
+                <mat-icon class="open-icon">
+                  {{ obj.open ? 'arrow_drop_down' : 'arrow_right' }}
+                </mat-icon>
+                <p>
+                  {{ I + 1 }}
+                </p>
+                <div class="spacer"></div>
+
+                <button mat-icon-button color="warn" class="delete-button">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+              </mat-list-item>
+
+              <!-- liste med key-values -->
+              <ng-container *ngIf="obj.open">
+                <npx-fire-ui-key-value-pair
+                  cdkOverlayOrigin
+                  *ngFor="let kv of obj.keyValues; index as ii"
+                  #trigger="cdkOverlayOrigin"
+                  (click)="toggle(trigger, kv)"
+                  [keyValue]="kv"
+                  [isChild]="true"
+                >
+                </npx-fire-ui-key-value-pair>
+              </ng-container>
+            </ng-container>
+
+            <!-- legg til listeelement -->
+            <mat-list-item matRipple (click)="addListItem(i)">
+              <button
+                mat-button
+                [disableRipple]="true"
+                color="primary"
+                class="add-button in-list no-hover-effect"
+              >
+                Nytt svar
+                <!-- <mat-icon class="add-icon">add</mat-icon> -->
+              </button>
+            </mat-list-item>
+          </ng-container>
+        </ng-container>
+      </mat-list>
+    </div>
+  </div>
+</mat-card>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="triggerOrigin"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+  (backdropClick)="isOpen = !isOpen"
+>
+  <npx-fire-ui-key-value-editor
+    [data]="data"
+    (closeEditor)="closeEditor()"
+  ></npx-fire-ui-key-value-editor>
+</ng-template>

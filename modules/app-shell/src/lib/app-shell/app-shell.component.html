@@ -4,17 +4,14 @@
     #drawer
     class="sidenav"
     fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [attr.role]="ui.state.isHandset ? 'dialog' : 'navigation'"
+    [mode]="ui.state.isHandset ? 'over' : 'side'"
+    [opened]="!ui.state.isHandset"
   >
     <!-- Logo  -->
-    <mat-toolbar class="divider logo">
-      <img
-        RouterLink="options.homeUrl"
-        src="https://via.placeholder.com/215x36"
-        alt=""
-      />
+    <mat-toolbar class="divider logo" routerLink="{{ options.homeUrl }}">
+      <img src="{{ options.brandIconUrl }}" />
+      <h1>{{ options.brandName }}</h1>
     </mat-toolbar>
 
     <mat-nav-list>
@@ -24,7 +21,7 @@
         <a routerLink="/{{ options.homeUrl }}" mat-list-item class="hjem-knapp">
           <mat-icon>home</mat-icon>
           <span class="nav-label">
-            Hjem
+            Home
           </span>
         </a>
         <div class="settings-menu">
@@ -70,7 +67,7 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
+        *ngIf="ui.state.isHandset"
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
@@ -85,7 +82,7 @@
       <!-- profil -->
       <button
         mat-icon-button
-        [class.profile-positioning]="isHandset$ | async"
+        [class.profile-positioning]="ui.state.isHandset"
         class="profile-icon"
         [mat-menu-trigger-for]="profileMenu"
       >
@@ -94,10 +91,11 @@
     </mat-toolbar>
 
     <div class="page">
-      <div class="overskrift">Organisasjoner</div>
-      <h1 [class.overskrift]="ui.state.isScrolled">Dynamisk</h1>
-      <!-- <ng-content></ng-content> -->
-      <router-outlet></router-outlet>
+      <div class="overskrift">{{ currentPageId }}</div>
+      <router-outlet
+        (activate)="routerOutletsEvents($event)"
+        (activateWith)="routerOutletsEvents($event)"
+      ></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

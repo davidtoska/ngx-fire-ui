@@ -1,0 +1,106 @@
+$color-navbar: #1a73e8;
+$color-text-headline: rgba(0, 0, 0, 0.87);
+$color-text-lighter: rgba(0, 0, 0, 0.54);
+
+// Style Modal
+::ng-deep {
+  .new-context-modal {
+    mat-dialog-container {
+      padding: 0px !important;
+    }
+  }
+}
+
+mat-sidenav {
+  width: 100vw;
+  left: 0;
+  transform: translateX(100vw);
+  transition: all 0.2s;
+  background-color: #f6f7f9;
+
+  &.hide {
+    transform: translateX(100vw) !important;
+  }
+
+  &.handset {
+    .content {
+      max-width: 80vw;
+      padding-left: 20px;
+      padding-top: 0;
+
+      mat-form-field input {
+        font-size: 20px;
+      }
+      .header {
+        padding-left: 20px;
+        padding-top: 0;
+      }
+      h1 {
+        font-size: 28px;
+      }
+    }
+    .sidebar {
+      visibility: hidden;
+    }
+  }
+}
+
+.sidebar {
+  background-color: $color-navbar;
+  background-image: url(//www.gstatic.com/mobilesdk/180313_mobilesdk/grain@2x.png);
+  background-size: 100% 100%;
+  flex: 0 0 320px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  width: 320px;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+  max-width: 696px;
+  padding-left: 108px;
+  padding-top: 50px;
+
+  .header {
+    align-items: center;
+    min-height: 96px;
+    margin-left: -20px;
+    display: flex;
+
+    button {
+      margin-right: 24px;
+    }
+    p {
+      font-size: 20px;
+      line-height: 28px;
+      color: rgba(0, 0, 0, 0.54);
+      display: inline;
+      margin: 0;
+    }
+  }
+
+  h1 {
+    font-size: 36px;
+    line-height: 54px;
+    font-weight: 400;
+    color: $color-text-headline;
+  }
+
+  mat-form-field {
+    input {
+      font-size: 36px;
+    }
+    mat-label {
+      color: $color-text-lighter;
+      font-size: 18px;
+    }
+    margin: 25px 0;
+  }
+  .continue-button {
+    height: 56px;
+    width: 216px;
+  }
+}

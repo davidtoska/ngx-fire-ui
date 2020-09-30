@@ -1,0 +1,29 @@
+<div class="landingpage">
+  <mat-toolbar>
+    <div class="logo">
+      <img src="https://via.placeholder.com/215x36" alt="" />
+    </div>
+    <!-- spacer -->
+    <div class="spacer"></div>
+
+    <!-- profil -->
+    <button mat-icon-button class="profile-icon">
+      <mat-icon>person</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="header"></div>
+  <div class="content" [class.full-width]="handset$">
+    <ng-content></ng-content>
+  </div>
+  <div class="spacer"></div>
+  <div class="footer">
+    <!-- <div class="buttons">
+        <button mat-button>Support</button>
+        <button mat-button>Terms</button>
+        <button mat-button>Privacy Policy</button>
+      </div> -->
+    <div class="logo">
+      <img src="https://via.placeholder.com/50x50" alt="" />
+    </div>
+  </div>
+</div>

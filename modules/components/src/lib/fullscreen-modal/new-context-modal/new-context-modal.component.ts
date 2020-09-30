@@ -6,7 +6,7 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-  selector: 'npx-fire-ui-new-context-modal',
+  selector: 'ngx-fire-ui-new-context-modal',
   templateUrl: './new-context-modal.component.html',
   styleUrls: ['./new-context-modal.component.scss'],
 })

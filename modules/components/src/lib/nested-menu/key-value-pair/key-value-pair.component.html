@@ -1,0 +1,11 @@
+<mat-list-item [class.array-child]="isChild">
+  <p>
+    {{ keyValue.key }}
+    :&nbsp; <span>{{ keyValue.value }}</span>
+  </p>
+  <div class="spacer"></div>
+
+  <button mat-icon-button class="edit-icon">
+    <mat-icon>edit</mat-icon>
+  </button>
+</mat-list-item>

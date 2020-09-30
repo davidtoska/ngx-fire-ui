@@ -3,7 +3,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ComponentRef,
   Inject,
+  Injector,
   OnInit,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,16 +19,26 @@ import {
   defaulOptions,
   MenuItem,
 } from './shell-options';
-import { NewContextModalComponent } from '../new-context-modal/new-context-modal.component';
+// import { NewContextModalComponent } from '../new-context-modal/new-context-modal.component';
 import { AuthService } from '../services/auth.service';
+import { LayoutService } from '../services/layout.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BasePage } from '../base-page.component';
+
+// interface UiState {
+//   sideNavCollapsed: boolean;
+//   isScrolled: boolean;
+//   isHandset: boolean;
+// }
 
 @Component({
-  selector: 'npx-fire-ui-app-shell',
+  selector: 'ngx-fire-ui-app-shell',
   templateUrl: './app-shell.component.html',
   styleUrls: ['./app-shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppShellComponent implements OnInit {
+  currentPageId = '';
   ui = new StoreSync({
     sideNavCollapsed: false,
     isScrolled: false,
@@ -34,53 +46,47 @@ export class AppShellComponent implements OnInit {
   });
 
   isLoggedIn = false;
-
   options: AppShellOptions = defaulOptions;
   menuItems: MenuItem[] = [];
 
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
-
   constructor(
     public dialog: MatDialog,
-    private breakpointObserver: BreakpointObserver,
+    private readonly route: ActivatedRoute,
+    private layout: LayoutService,
     private scrollService: ScrollService,
     private ref: ChangeDetectorRef,
     private readonly authService: AuthService,
     @Inject(APP_SHELL_OPTIONS) private appOptions: AppShellOptions
   ) {
+    // this.route.data.subscribe((d) => console.log(d));
     this.menuItems = [...this.appOptions.menuItems];
-    this.ui.state$.subscribe((state) => {
-      console.log(state);
+    this.layout.isHandset$.subscribe((isHandset) => {
+      const a = isHandset;
+
+      this.ui.setState({ isHandset });
     });
-    this.isHandset$.subscribe((isHandset) => {
-      this.ui.update({ isHandset });
-    });
+
     this.authService.isLoggedId$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
-      console.log(this.isLoggedIn);
     });
+
+    this.options = { ...this.appOptions };
   }
 
   ngOnInit(): void {
     this.scrollService.state$.subscribe((state) => {
-      this.ui.update({ isScrolled: state.isScrolled });
+      this.ui.setState({ isScrolled: state.isScrolled });
       this.ref.detectChanges();
     });
   }
   openDialog() {
-    const dialogRef = this.dialog.open(NewContextModalComponent, {
-      panelClass: ['new-context-modal'],
-      disableClose: true,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // const dialogRef = this.dialog.open(NewContextModalComponent, {
+    //   panelClass: ['new-context-modal'],
+    //   disableClose: true,
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
   onLogout() {
     this.authService.logOut();
@@ -91,7 +97,21 @@ export class AppShellComponent implements OnInit {
   }
 
   sideNavToggle() {
-    const sideNavCollapsed = !this.ui.select('sideNavCollapsed');
-    this.ui.update({ sideNavCollapsed });
+    const sideNavCollapsed = !this.ui.state.sideNavCollapsed;
+    this.ui.setState({ sideNavCollapsed });
+  }
+
+  routerOutletsEvents(ev: BasePage) {
+    // console.log(ev);
+    if (!ev.pageId) {
+      console.error('Every page needs to extend base-page');
+    }
+
+    if (!ev.__is__initialized) {
+      console.log(ev.__is__initialized);
+      // console.error('page needs to be initialized: ' + ev.__is__initialized);
+    }
+
+    this.currentPageId = ev.pageId ?? 'Set pageId';
   }
 }

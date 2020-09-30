@@ -1,0 +1,22 @@
+<mat-card class="editor">
+  <mat-card-content>
+    <form>
+      <div class="edit-field">
+        <input matInput disabled class="key-field" [placeholder]="data.key" />
+      </div>
+      <p>=</p>
+      <div class="edit-field">
+        <input matInput class="value-field" [value]="data.value" />
+      </div>
+    </form>
+
+    <div class="options">
+      <button mat-icon-button color="warn" *ngIf="data.deletable">
+        <mat-icon class="delete-icon">delete</mat-icon>
+      </button>
+      <div class="spacer"></div>
+      <button mat-button (click)="callParentToggle()">Avbryt</button>
+      <button mat-flat-button class="save-button">Lagre</button>
+    </div>
+  </mat-card-content>
+</mat-card>

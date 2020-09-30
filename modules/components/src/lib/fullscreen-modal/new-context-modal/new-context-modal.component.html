@@ -1,0 +1,44 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    class="sidenav"
+    #contextDrawer
+    [opened]="true"
+    fixedInViewport
+    [class.hide]="hideModal"
+    (keyup.Escape)="closeDialogHandler()"
+    [class.handset]="!handset$"
+  >
+    <div class="sidebar"></div>
+
+    <div class="content">
+      <div class="header">
+        <button mat-icon-button (click)="closeDialogHandler()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <p>Create a Context <span>(Step 2 of 3)</span></p>
+      </div>
+
+      <h1>Legg til administrator</h1>
+
+      <mat-form-field>
+        <mat-label>Navn</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Skriv inn administratorens navn"
+          (keyup.enter)="closeDialogHandler()"
+          cdkFocusInitial
+        />
+      </mat-form-field>
+      <button
+        mat-flat-button
+        color="primary"
+        class="continue-button"
+        (click)="closeDialogHandler()"
+      >
+        Neste
+      </button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content></mat-sidenav-content>
+</mat-sidenav-container>

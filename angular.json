@@ -5,7 +5,7 @@
       "projectType": "library",
       "root": "modules/app-shell",
       "sourceRoot": "modules/app-shell/src",
-      "prefix": "npx-fire-ui",
+      "prefix": "ngx-fire-ui",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
@@ -54,7 +54,7 @@
       },
       "root": "projects/example-app",
       "sourceRoot": "projects/example-app/src",
-      "prefix": "npx-fire-ui",
+      "prefix": "ngx-fire-ui",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -172,7 +172,7 @@
       "projectType": "library",
       "root": "modules/core",
       "sourceRoot": "modules/core/src",
-      "prefix": "npx-fire-ui",
+      "prefix": "ngx-fire-ui",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
@@ -203,6 +203,50 @@
             "tsConfig": "modules/core/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "modules/core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "components": {
+      "projectType": "library",
+      "root": "modules/components",
+      "sourceRoot": "modules/components/src",
+      "prefix": "npx-fire-ui",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "modules/components/tsconfig.lib.json",
+            "project": "modules/components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "modules/components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "modules/components/tsconfig.lib.json",
+              "modules/components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!modules/components/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "modules/components/jest.config.js",
+            "tsConfig": "modules/components/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "modules/components/src/test-setup.ts"
           }
         }
       },

@@ -1,0 +1,14 @@
+<!-- <ng-container *ngIf="formReady"> -->
+<form [formGroup]="form" [style.width.px]="ui.state.width">
+  <ng-container *ngFor="let field of fields">
+    <ngx-fire-ui-form-field [field]="field"></ngx-fire-ui-form-field>
+    <!-- <lib-dynamic-field [field]="field"></lib-dynamic-field> -->
+    <!-- <div [ngxErrors]="field.name">
+            <div *ngFor="let error of errors" [ngxError]="error.name" [when]="error.rules" class="error">
+              {{ error.text }}
+            </div>
+          </div> -->
+  </ng-container>
+  <button mat-raised-button (click)="onSubmit($event)">Submit</button>
+</form>
+<!-- </ng-container> -->

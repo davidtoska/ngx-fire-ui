@@ -1,12 +1,13 @@
-// import { AppShellOptions } from 'modules/app-shell/src/lib/app-shell/shell-options';
-import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
-import { AppShellOptions } from '@ngx-fire-ui/app-shell';
+import { AppShellOptions, MenuItem } from '@ngx-fire-ui/app-shell';
 
 export const URLS = {
   home: 'home',
   organisations: 'organisations',
-  employees: 'employees'
-}
+  employees: 'employees',
+  dynamicForms: 'dynamic-forms',
+  jsonEditor: 'json-editor',
+  fullScreenPage: 'fullscreen-page',
+};
 
 const organisasjoner = {
   route: URLS.organisations,
@@ -19,75 +20,28 @@ const ansatte = {
   icon: 'people',
 };
 
+const orders: MenuItem = {
+  route: URLS.dynamicForms,
+  label: 'Dynamic forms',
+  icon: 'shopping_cart',
+};
+
+const editor: MenuItem = {
+  route: URLS.jsonEditor,
+  label: 'Json editor',
+  icon: 'topic',
+};
+
+const fullScreenLandingPage: MenuItem = {
+  route: URLS.fullScreenPage,
+  label: 'Fullscreen page',
+  icon: 'topic',
+};
 export const shellOptions: AppShellOptions = {
   wheelMenu: true,
   contextMenu: true,
   homeUrl: URLS.home,
-  iconUrl: 'assets/tvicon.svg',
-  menuItems: [
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-    organisasjoner,
-    ansatte,
-  ],
+  brandIconUrl: 'assets/tvicon.svg',
+  brandName: 'Example brand',
+  menuItems: [organisasjoner, ansatte, orders, editor, fullScreenLandingPage],
 };

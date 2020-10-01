@@ -18,6 +18,7 @@ export default function (schema: any): Rule {
       name: schema.name,
       style: 'scss',
       skipTests: true,
+      export: true,
       module: schema.name,
     }),
     externalSchematic('@schematics/angular', 'service', {
@@ -28,7 +29,7 @@ export default function (schema: any): Rule {
     }),
     externalSchematic('@schematics/angular', 'class', {
       project: 'components',
-      name: schema.name,
+      name: 'public_api',
       path: 'modules/components/src/lib/' + schema.name,
       skipTests: true,
     }),

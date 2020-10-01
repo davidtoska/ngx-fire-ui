@@ -7,6 +7,7 @@ export const URLS = {
   dynamicForms: 'dynamic-forms',
   jsonEditor: 'json-editor',
   fullScreenPage: 'fullscreen-page',
+  table: 'table-page',
 };
 
 const organisasjoner = {
@@ -37,11 +38,24 @@ const fullScreenLandingPage: MenuItem = {
   label: 'Fullscreen page',
   icon: 'topic',
 };
+
+const tablePage: MenuItem = {
+  route: URLS.table,
+  label: 'Table',
+  icon: 'topic',
+};
 export const shellOptions: AppShellOptions = {
   wheelMenu: true,
   contextMenu: true,
   homeUrl: URLS.home,
   brandIconUrl: 'assets/tvicon.svg',
   brandName: 'Example brand',
-  menuItems: [organisasjoner, ansatte, orders, editor, fullScreenLandingPage],
+  menuItems: [
+    organisasjoner,
+    ansatte,
+    orders,
+    editor,
+    fullScreenLandingPage,
+    tablePage,
+  ],
 };

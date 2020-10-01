@@ -21,8 +21,10 @@ import { JsonEditorComponent } from './json-editor/json-editor.component';
 import {
   FullscreenPageModule,
   NestedMenuModule,
+  TableModule,
 } from '@ngx-fire-ui/components';
 import { FullscreenLandingpageComponent } from './fullscreen-landingpage/fullscreen-landingpage.component';
+import { TablePageComponent } from './table-page/table-page.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,14 @@ import { FullscreenLandingpageComponent } from './fullscreen-landingpage/fullscr
     OrderFormComponent,
     JsonEditorComponent,
     FullscreenLandingpageComponent,
+    TablePageComponent,
   ],
   imports: [
     BrowserModule,
     AppShellModule.forRoot(shellOptions),
     FullscreenPageModule,
     NestedMenuModule,
+    TableModule,
     DynamicFormModule,
     MatGridListModule,
     RouterModule.forRoot(
@@ -66,6 +70,10 @@ import { FullscreenLandingpageComponent } from './fullscreen-landingpage/fullscr
             {
               path: URLS.jsonEditor,
               component: JsonEditorComponent,
+            },
+            {
+              path: URLS.table,
+              component: TablePageComponent,
             },
           ],
         },

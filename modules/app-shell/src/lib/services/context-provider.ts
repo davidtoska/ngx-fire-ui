@@ -1,9 +1,17 @@
 import { Observable } from 'rxjs';
+import { InjectionToken } from '@angular/core';
 
-export abstract class ContextProvider<T> {
+export const CONTEXT_PROVIDER = new InjectionToken(
+  '__NGX_FIRE_UI_CONTEXT_PROVIDER'
+);
+
+export interface ContextCardData {
+  headline: string;
+  description: string;
+  bulletpoints: [string, string, string];
+}
+export abstract class ContextProvider {
   abstract name: string;
-  abstract delete(context: T): void;
-  abstract create(context: Partial<T>): void;
-  abstract getAll(): Observable<T[]>;
-  abstract createSummary(contect: T): { headline: string; subHeadline: string };
+  abstract list$: Observable<ContextCardData[]>;
+  abstract create(): void;
 }

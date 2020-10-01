@@ -46,7 +46,6 @@ const tablePage: MenuItem = {
 };
 export const shellOptions: AppShellOptions = {
   wheelMenu: true,
-  // contextProvider: { id: 'ContextProvider' },
   homeUrl: URLS.home,
   brandIconUrl: 'assets/tvicon.svg',
   brandName: 'Example brand',

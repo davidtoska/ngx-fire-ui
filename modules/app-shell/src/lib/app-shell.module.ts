@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -27,7 +27,6 @@ import {
   FullscreenPageModule,
 } from '@ngx-fire-ui/components';
 
-import { CONTEXT_PROVIDER } from './services/private-tokens';
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
@@ -86,10 +85,7 @@ export class AppShellModule {
   ): ModuleWithProviders<AppShellModule> {
     return {
       ngModule: AppShellModule,
-      providers: [
-        { provide: APP_SHELL_OPTIONS, useValue: options },
-        { provide: CONTEXT_PROVIDER, useValue: options.contextProvider },
-      ],
+      providers: [{ provide: APP_SHELL_OPTIONS, useValue: options }],
     };
   }
 }

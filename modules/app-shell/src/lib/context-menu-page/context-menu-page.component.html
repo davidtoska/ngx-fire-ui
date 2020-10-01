@@ -1,14 +1,14 @@
 <ngx-fire-ui-fullscreen-page>
   <h1 class="mat-display-2">Dine Prosjekter</h1>
   <div [class.full-width]="handset$" class="cards">
-    <mat-card>
+    <mat-card (click)="addContext()">
       <button mat-button color="primary">
         <mat-icon>add</mat-icon>Legg til prosjekt
       </button>
     </mat-card>
-    <mat-card *ngFor="let p of projects">
+    <mat-card *ngFor="let p of list$ | async">
       <mat-card-header>
-        <mat-card-title> {{ p.name }} </mat-card-title>
+        <mat-card-title> {{ p.headline }} </mat-card-title>
         <mat-card-subtitle *ngIf="p.description">
           {{ p.description }}
         </mat-card-subtitle>

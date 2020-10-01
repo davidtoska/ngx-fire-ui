@@ -1,7 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AppShellOptions, APP_SHELL_OPTIONS } from '../app-shell/shell-options';
 import { BasePage } from '../base-page.component';
-import { CONTEXT_PROVIDER } from '../services/private-tokens';
+import {
+  CONTEXT_PROVIDER,
+  ContextProvider,
+} from '../services/context-provider';
 
 @Component({
   selector: 'ngx-fire-ui-context-menu-page',
@@ -10,34 +14,22 @@ import { CONTEXT_PROVIDER } from '../services/private-tokens';
 })
 export class ContextMenuPageComponent implements OnInit {
   pageId = 'Top context';
-  projects = [
-    {
-      name: 'Lyngbøtunet Sykehjem',
-      description: 'Aldershjem og sykehjem på laksevåg',
-    },
-    {
-      name: 'Lyngbøtunet Sykehjem',
-    },
-    {
-      name: 'Lyngbøtunet Sykehjem',
-    },
-    {
-      name: 'Lyngbøtunet Sykehjem',
-      description: 'Aldershjem og sykehjem på laksevåg',
-    },
-    {
-      name: 'Lyngbøtunet Sykehjem',
-      description: 'Aldershjem og sykehjem på laksevåg',
-    },
-  ];
+  contextName: string;
   handset$ = false;
+
   constructor(
-    @Inject(APP_SHELL_OPTIONS) options: AppShellOptions,
-    @Inject(CONTEXT_PROVIDER) contextProvider: any
+    @Inject(CONTEXT_PROVIDER) private contextProvider: ContextProvider
   ) {
-    console.log(options);
     console.log(contextProvider);
+    this.contextName = contextProvider.name;
   }
 
+  get list$() {
+    return this.contextProvider.list$;
+  }
+
+  addContext() {
+    this.contextProvider.create();
+  }
   ngOnInit(): void {}
 }

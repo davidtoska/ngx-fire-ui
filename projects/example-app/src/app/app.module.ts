@@ -8,6 +8,7 @@ import {
   AppShellComponent,
   AppShellModule,
   DynamicFormModule,
+  CONTEXT_PROVIDER,
 } from '@ngx-fire-ui/app-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
@@ -25,6 +26,7 @@ import {
 } from '@ngx-fire-ui/components';
 import { FullscreenLandingpageComponent } from './fullscreen-landingpage/fullscreen-landingpage.component';
 import { TablePageComponent } from './table-page/table-page.component';
+import { OrgsProvider } from './OrgsProvider';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,7 @@ import { TablePageComponent } from './table-page/table-page.component';
     ),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [{ provide: CONTEXT_PROVIDER, useClass: OrgsProvider }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Field, FieldType } from '../types';
 import { FormControl, FormGroupDirective } from '@angular/forms';
-import { isString } from '@ngx-fire-ui/core';
+import { isString } from '../../isFunctions';
 
 @Component({
   selector: 'ngx-fire-ui-form-field',

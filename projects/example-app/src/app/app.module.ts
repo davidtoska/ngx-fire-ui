@@ -7,9 +7,9 @@ import { RouterModule } from '@angular/router';
 import {
   AppShellComponent,
   AppShellModule,
-  DynamicFormModule,
   CONTEXT_PROVIDER,
 } from '@ngx-fire-ui/app-shell';
+import { DynamicFormModule } from '@ngx-fire-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrganisationsPageComponent } from './organisations-page/organisations-page.component';
 import { shellOptions, URLS } from './appConfig';

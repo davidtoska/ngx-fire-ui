@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { BasePage } from 'modules/app-shell/src/lib/base-page.component';
 import { StoreSync } from '@ngx-fire-ui/core';
-import { FieldType, Field, SimpleFormBuilder } from '@ngx-fire-ui/app-shell';
+import { FieldType, Field, SimpleFormBuilder } from '@ngx-fire-ui/core';
 
 @Component({
   selector: 'ngx-fire-ui-order-form',

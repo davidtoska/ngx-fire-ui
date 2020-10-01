@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SimpleFormBuilder, FormUiOptions } from '../simple-form-builder';
-import { StoreSync } from '@ngx-fire-ui/core';
+import { StoreSync } from '../../store-sync';
 
 @Component({
   selector: 'ngx-fire-ui-form',

@@ -1,7 +1,6 @@
 import { Field, FieldType } from './types';
-import { isNumber } from '@ngx-fire-ui/core';
 import { Validators } from '@angular/forms';
-
+import { isNumber } from '../isFunctions';
 type CheckboxParams = Pick<Field<boolean>, 'name' | 'value' | 'defaultValue'>;
 type TextFieldParams = Pick<
   Field<string>,

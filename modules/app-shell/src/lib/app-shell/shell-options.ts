@@ -9,13 +9,12 @@ export const defaulOptions: AppShellOptions = {
   wheelMenu: true,
 };
 
-export interface AppShellOptions<T = any> {
+export interface AppShellOptions {
   readonly menuItems: MenuItem[];
   readonly brandIconUrl: string;
   readonly brandName: string;
   readonly homeUrl: string;
   readonly wheelMenu: boolean;
-  readonly contextProvider?: ContextProvider<T>;
 }
 
 export class MenuItem {

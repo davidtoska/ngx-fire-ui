@@ -60,11 +60,11 @@ export class OrgsProvider extends ContextProvider {
   constructor() {
     super();
     this.list$ = this.data$.pipe(
-      map((d) => {
-        const items: ContextCardData[] = d.map((d) => {
+      map((entityDataList) => {
+        const items: ContextCardData[] = entityDataList.map((it) => {
           const item: ContextCardData = {
-            headline: d.orgId,
-            description: d.description,
+            headline: it.orgId,
+            description: it.description,
             bulletpoints: ['', '', ''],
           };
           return item;

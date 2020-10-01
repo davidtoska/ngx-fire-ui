@@ -20,7 +20,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRippleModule } from '@angular/material/core';
-import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   FullscreenModalModule,
@@ -61,7 +60,6 @@ export const ROUTES = {
     MatTabsModule,
     MatRippleModule,
     ReactiveFormsModule,
-    DynamicFormModule,
     FullscreenModalModule,
     FullscreenPageModule,
   ],
@@ -71,12 +69,7 @@ export const ROUTES = {
     ContextMenuPageComponent,
     LoginPageComponent,
   ],
-  exports: [
-    AppShellComponent,
-    LoginComponent,
-    LoginPageComponent,
-    DynamicFormModule,
-  ],
+  exports: [AppShellComponent, LoginComponent, LoginPageComponent],
   entryComponents: [],
 })
 export class AppShellModule {

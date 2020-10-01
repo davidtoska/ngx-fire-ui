@@ -10,6 +10,7 @@ export interface ContextCardData {
   description: string;
   bulletpoints: [string, string, string];
 }
+
 export abstract class ContextProvider {
   abstract name: string;
   abstract list$: Observable<ContextCardData[]>;

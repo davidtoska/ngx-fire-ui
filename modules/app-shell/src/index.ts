@@ -11,3 +11,4 @@ export * from './lib/app-shell/shell-options';
 
 // BasePage
 export { BasePage } from './lib/base-page.component';
+export * from './lib/services/context-provider';

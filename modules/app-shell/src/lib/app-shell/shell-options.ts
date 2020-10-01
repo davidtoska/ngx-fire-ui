@@ -1,4 +1,5 @@
 import { InjectionToken, Type } from '@angular/core';
+import { ContextProvider } from '../services/context-provider';
 
 export const defaulOptions: AppShellOptions = {
   menuItems: [],
@@ -6,17 +7,15 @@ export const defaulOptions: AppShellOptions = {
   brandName: 'Default brand name',
   homeUrl: 'home',
   wheelMenu: true,
-  contextMenu: true,
 };
 
-export interface AppShellOptions {
+export interface AppShellOptions<T = any> {
   readonly menuItems: MenuItem[];
   readonly brandIconUrl: string;
   readonly brandName: string;
   readonly homeUrl: string;
   readonly wheelMenu: boolean;
-  readonly contextMenu: boolean;
-  // readonly contextUrl?: string;
+  readonly contextProvider?: ContextProvider<T>;
 }
 
 export class MenuItem {

@@ -22,7 +22,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRippleModule } from '@angular/material/core';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FullscreenModalModule } from '@ngx-fire-ui/components';
+import {
+  FullscreenModalModule,
+  FullscreenPageModule,
+} from '@ngx-fire-ui/components';
+
+import { CONTEXT_PROVIDER } from './services/private-tokens';
 /**
  * Maybe we can export all routs to parent-app, and not use RouterModule.forchild() in lib.
  */
@@ -39,7 +44,9 @@ export const ROUTES = {
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild([
+      { path: 'context', component: ContextMenuPageComponent },
+    ]),
     LayoutModule,
     ScrollingModule,
     MatToolbarModule,
@@ -57,6 +64,7 @@ export const ROUTES = {
     ReactiveFormsModule,
     DynamicFormModule,
     FullscreenModalModule,
+    FullscreenPageModule,
   ],
   declarations: [
     AppShellComponent,
@@ -78,7 +86,10 @@ export class AppShellModule {
   ): ModuleWithProviders<AppShellModule> {
     return {
       ngModule: AppShellModule,
-      providers: [{ provide: APP_SHELL_OPTIONS, useValue: options }],
+      providers: [
+        { provide: APP_SHELL_OPTIONS, useValue: options },
+        { provide: CONTEXT_PROVIDER, useValue: options.contextProvider },
+      ],
     };
   }
 }

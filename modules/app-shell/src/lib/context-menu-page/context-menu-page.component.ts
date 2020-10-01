@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AppShellOptions, APP_SHELL_OPTIONS } from '../app-shell/shell-options';
+import { BasePage } from '../base-page.component';
+import { CONTEXT_PROVIDER } from '../services/private-tokens';
 
 @Component({
   selector: 'ngx-fire-ui-context-menu-page',
@@ -6,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./context-menu-page.component.scss'],
 })
 export class ContextMenuPageComponent implements OnInit {
+  pageId = 'Top context';
   projects = [
     {
       name: 'Lyngbøtunet Sykehjem',
@@ -27,7 +31,13 @@ export class ContextMenuPageComponent implements OnInit {
     },
   ];
   handset$ = false;
-  constructor() {}
+  constructor(
+    @Inject(APP_SHELL_OPTIONS) options: AppShellOptions,
+    @Inject(CONTEXT_PROVIDER) contextProvider: any
+  ) {
+    console.log(options);
+    console.log(contextProvider);
+  }
 
   ngOnInit(): void {}
 }

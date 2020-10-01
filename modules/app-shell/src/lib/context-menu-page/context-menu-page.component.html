@@ -1,22 +1,24 @@
-<h1 class="mat-display-2">Dine Prosjekter</h1>
-<div [class.full-width]="handset$" class="cards">
-  <mat-card>
-    <button mat-button color="primary">
-      <mat-icon>add</mat-icon>Legg til prosjekt
-    </button>
-  </mat-card>
-  <mat-card *ngFor="let p of projects">
-    <mat-card-header>
-      <mat-card-title> {{ p.name }} </mat-card-title>
-      <mat-card-subtitle *ngIf="p.description">
-        {{ p.description }}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <div class="spacer"></div>
-    <div class="buttons">
-      <button mat-icon-button><mat-icon>calendar_today</mat-icon></button>
-      <button mat-icon-button><mat-icon>credit_card</mat-icon></button>
-      <button mat-icon-button><mat-icon>mail_outline</mat-icon></button>
-    </div>
-  </mat-card>
-</div>
+<ngx-fire-ui-fullscreen-page>
+  <h1 class="mat-display-2">Dine Prosjekter</h1>
+  <div [class.full-width]="handset$" class="cards">
+    <mat-card>
+      <button mat-button color="primary">
+        <mat-icon>add</mat-icon>Legg til prosjekt
+      </button>
+    </mat-card>
+    <mat-card *ngFor="let p of projects">
+      <mat-card-header>
+        <mat-card-title> {{ p.name }} </mat-card-title>
+        <mat-card-subtitle *ngIf="p.description">
+          {{ p.description }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <div class="spacer"></div>
+      <div class="buttons">
+        <button mat-icon-button><mat-icon>calendar_today</mat-icon></button>
+        <button mat-icon-button><mat-icon>credit_card</mat-icon></button>
+        <button mat-icon-button><mat-icon>mail_outline</mat-icon></button>
+      </div>
+    </mat-card>
+  </div>
+</ngx-fire-ui-fullscreen-page>

@@ -8,7 +8,7 @@ interface LevelIndex {
 }
 
 @Component({
-  selector: 'npx-fire-ui-nested-menu',
+  selector: 'ngx-fire-ui-nested-menu',
   templateUrl: './nested-menu.component.html',
   styleUrls: ['./nested-menu.component.scss'],
 })

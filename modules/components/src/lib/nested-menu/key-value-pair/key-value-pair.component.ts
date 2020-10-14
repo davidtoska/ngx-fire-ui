@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'npx-fire-ui-key-value-pair',
+  selector: 'ngx-fire-ui-key-value-pair',
   templateUrl: './key-value-pair.component.html',
   styleUrls: ['./key-value-pair.component.scss'],
 })

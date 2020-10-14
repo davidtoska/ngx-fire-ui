@@ -2,6 +2,7 @@
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 @import '../../../modules/components/src/lib/nested-menu/nested-menu.theme.scss';
+@import '../../../modules/components/src/lib/fullscreen-page/fullscreen-page.theme.scss';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -35,6 +36,7 @@ $example-app-theme: mat-light-theme(
 // that you are using.
 @include angular-material-theme($example-app-theme);
 @include nested-menu-theme($example-app-theme);
+@include fullscreen-page-theme($example-app-theme);
 /* You can add global styles to this file, and also import other style files */
 
 html,

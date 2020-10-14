@@ -2,7 +2,7 @@ import { Overlay } from '@angular/cdk/overlay';
 import { Component, Injector, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'npx-fire-ui-fullscreen-modal',
+  selector: 'ngx-fire-ui-fullscreen-modal',
   templateUrl: './fullscreen-modal.component.html',
   styleUrls: ['./fullscreen-modal.component.css'],
 })

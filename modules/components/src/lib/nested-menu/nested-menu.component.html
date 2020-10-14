@@ -98,14 +98,14 @@
       </div>
       <!-- Liste med key-values -->
       <mat-list>
-        <npx-fire-ui-key-value-pair
+        <ngx-fire-ui-key-value-pair
           *ngFor="let kv of detailData.keyValuePairs"
           cdkOverlayOrigin
           #trigger="cdkOverlayOrigin"
           (click)="toggle(trigger, kv)"
           [keyValue]="kv"
         >
-        </npx-fire-ui-key-value-pair>
+        </ngx-fire-ui-key-value-pair>
       </mat-list>
       <!-- Liste med lister -->
       <mat-list>
@@ -153,7 +153,7 @@
 
               <!-- liste med key-values -->
               <ng-container *ngIf="obj.open">
-                <npx-fire-ui-key-value-pair
+                <ngx-fire-ui-key-value-pair
                   cdkOverlayOrigin
                   *ngFor="let kv of obj.keyValues; index as ii"
                   #trigger="cdkOverlayOrigin"
@@ -161,7 +161,7 @@
                   [keyValue]="kv"
                   [isChild]="true"
                 >
-                </npx-fire-ui-key-value-pair>
+                </ngx-fire-ui-key-value-pair>
               </ng-container>
             </ng-container>
 
@@ -192,8 +192,8 @@
   [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
   (backdropClick)="isOpen = !isOpen"
 >
-  <npx-fire-ui-key-value-editor
+  <ngx-fire-ui-key-value-editor
     [data]="data"
     (closeEditor)="closeEditor()"
-  ></npx-fire-ui-key-value-editor>
+  ></ngx-fire-ui-key-value-editor>
 </ng-template>

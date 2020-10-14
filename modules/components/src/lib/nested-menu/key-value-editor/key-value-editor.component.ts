@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'npx-fire-ui-key-value-editor',
+  selector: 'ngx-fire-ui-key-value-editor',
   templateUrl: './key-value-editor.component.html',
   styleUrls: ['./key-value-editor.component.scss'],
 })

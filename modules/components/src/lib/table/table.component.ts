@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'npx-fire-ui-table',
+  selector: 'ngx-fire-ui-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })

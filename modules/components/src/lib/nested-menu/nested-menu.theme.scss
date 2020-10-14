@@ -21,7 +21,7 @@
   $gray-054: mat-color($foreground, icon) !important;
   $gray-087: mat-color($foreground, text) !important;
 
-  npx-fire-ui-nested-menu {
+  ngx-fire-ui-nested-menu {
     mat-card {
       //   background-color: mat-color($primary) !important;
       .breadcrumbs p.hover {
@@ -71,7 +71,7 @@
       }
     }
   }
-  npx-fire-ui-key-value-pair {
+  ngx-fire-ui-key-value-pair {
     mat-list-item {
       .add-button {
         color: $primary;
@@ -97,7 +97,7 @@
     }
   }
 
-  npx-fire-ui-key-value-editor {
+  ngx-fire-ui-key-value-editor {
     .value-field {
       color: $gray-087;
       &:focus {

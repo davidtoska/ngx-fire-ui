@@ -1,29 +1,29 @@
 @import '~@angular/material/theming';
 
-@mixin nested-menu-theme($theme) {
+@mixin fullscreen-page-theme($theme) {
   $primary-color: map-get($theme, primary);
-  $accent-color: map-get($theme, accent);
-  $warn-color: map-get($theme, warn);
   $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
 
   $primary: mat-color($primary-color) !important;
-  $accent: mat-color($accent-color) !important;
-  $warn: mat-color($warn-color) !important;
-  $base: mat-color($foreground, base);
   $gray-50: mat-color($background, background) !important;
-  $gray-100: mat-color($background, app-bar) !important;
-  $gray-300: mat-color($background, selected-button) !important;
-  $gray-004: mat-color($background, hover) !important;
-  $gray-012: mat-color($background, disabled-button) !important;
-  $gray-026: mat-color($foreground, slider-off) !important;
-  $gray-038: mat-color($foreground, slider-off-active) !important;
-  $gray-054: mat-color($foreground, icon) !important;
-  $gray-087: mat-color($foreground, text) !important;
 
   ngx-fire-ui-fullscreen-page {
-    .landingpage {
+    mat-toolbar {
+      background-color: transparent;
+    }
+    mat-toolbar.scrolled {
       background-color: $primary;
+      @include mat-elevation(4);
+    }
+
+    .landingpage {
+      background-color: $gray-50;
+    }
+    .header {
+      background-color: $primary;
+    }
+    mat-toolbar mat-icon {
+      color: $gray-50;
     }
   }
 }

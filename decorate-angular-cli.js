@@ -44,7 +44,7 @@ function patchAngularCLI(initPath) {
       `
 if (!process.env['NX_CLI_SET']) {
   const { output } = require('@nrwl/workspace');
-  output.warn({ title: 'The Angular CLI was invoked instead of the Nx CLI. Use "npx ng [command]" or "nx [command]" instead.' });
+  output.warn({ title: 'The Angular CLI was invoked instead of the Nx CLI. Use "ngx ng [command]" or "nx [command]" instead.' });
 }
 ${angularCLIInit}
     `

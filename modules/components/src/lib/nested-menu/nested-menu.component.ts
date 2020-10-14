@@ -27,7 +27,9 @@ export class NestedMenuComponent implements OnInit {
   boardConfig = {
     depth: 1,
     showDetailView: false,
-    selectedNames: ['', '', '', ''],
+    detailName: "",
+    detailIcon: "filter_none",
+    selectedNames: ['', '', '', '', "", "", ""],
     icons: ['wysiwyg', 'view_headline', 'question_answer', 'done'],
     buttons: ['Ny sekvens', 'Nytt spørsmål', 'Nytt felt', ''],
   };
@@ -152,6 +154,17 @@ export class NestedMenuComponent implements OnInit {
     console.log(this.boardConfig.depth);
   }
 
+  updateName(level:number, i: number, isArray: boolean) {
+    if (isArray === true) {
+      const name = this.arrays[level - 1][i].id
+      this.boardConfig.selectedNames[level + 1] = name;
+    }
+    if (isArray === false) {
+      const name = this.items[level][i].id
+      this.boardConfig.selectedNames[level + 1] = name;
+    }
+  }
+
   showDetailView(show: boolean) {
     this.boardConfig.showDetailView = show;
   }
@@ -171,6 +184,7 @@ export class NestedMenuComponent implements OnInit {
         itemRef.selected = false;
       }
     }
+    this.boardConfig.selectedNames[level + 1] = "";
   }
 
   selectNewItem(level: number, i: number, isArray: boolean) {
@@ -219,6 +233,7 @@ export class NestedMenuComponent implements OnInit {
       return;
     }
     this.selectNewItem(level, i, isArray);
+    this.updateName(level, i, isArray)
 
     if (isArray === false && level > 0) {
       this.setDepth(level + 1);

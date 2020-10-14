@@ -1,11 +1,10 @@
-$color-text-dark: rgba(0, 0, 0, 0.87);
-$color-text-accent: #1a73e8;
-$color-grey-primary: #fafafa;
-$color-text-grey: rgba(0, 0, 0, 0.54);
+// $color-text-dark: rgba(0, 0, 0, 0.87);
+// $color-grey-primary: #fafafa;
+// $color-text-grey: rgba(0, 0, 0, 0.54);
 
 .mat-list-item {
   height: 32px;
-  color: $color-text-grey;
+  // color: $color-text-grey;
   cursor: pointer;
 }
 .mat-icon-button {
@@ -18,12 +17,8 @@ p {
   margin: 0;
 
   span {
-    color: $color-text-dark;
+    // color: $color-text-dark;
   }
-}
-
-.add-button {
-  color: $color-text-accent;
 }
 
 .edit-icon,
@@ -44,17 +39,17 @@ p {
 
 mat-list-item {
   &:hover {
-    background-color: #f5f5f5;
+    // background-color: #f5f5f5;
     box-shadow: -1px 0 0 transparent inset;
     .edit-icon,
     .delete-icon {
       opacity: 1;
     }
     .edit-icon {
-      color: $color-text-grey;
+      // color: $color-text-grey;
 
       &:hover {
-        color: $color-text-dark;
+        // color: $color-text-dark;
       }
     }
   }

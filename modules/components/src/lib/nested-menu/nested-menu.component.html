@@ -23,7 +23,9 @@
       class="level hide"
       [class.hide]="boardConfig.depth != 2 && boardConfig.depth != 1"
       [class.show]="boardConfig.depth === 2 || boardConfig.depth === 1"
-    >
+      
+      >
+      <!-- *ngIf="boardConfig.depth === 1 || boardConfig.depth === 2" -->
       <div class="name">
         <mat-icon>{{ boardConfig.icons[0] }}</mat-icon>
         <p>{{ appConfig.contextName }}</p>
@@ -47,12 +49,14 @@
         class="level middle-levels"
         [class.hide]="boardConfig.depth != l + 3 && boardConfig.depth != l + 2"
         [class.show]="
-          boardConfig.depth === l + 3 || boardConfig.depth === l + 2
+          boardConfig.depth === l + 3 || boardConfig.depth === l + 2 && boardConfig.depth > 2
         "
-      >
+        
+        >
+        <!-- *ngIf="boardConfig.depth === l + 3 || boardConfig.depth === l + 2" -->
         <div class="name">
-          <mat-icon>{{ boardConfig.icons[1] }}</mat-icon>
-          <p>{{ boardConfig.selectedNames[1] }}</p>
+          <mat-icon>{{ boardConfig.icons[l + 1] }}</mat-icon>
+          <p>{{ boardConfig.selectedNames[l + 1] }}</p>
         </div>
         <button mat-button class="header-button">
           <mat-icon>add</mat-icon>&nbsp;{{ boardConfig.buttons[2] }}
@@ -89,8 +93,8 @@
     <!-- Detail View -->
     <div class="level detail-view" *ngIf="boardConfig.showDetailView">
       <div class="name">
-        <mat-icon>{{ boardConfig.icons[3] }}</mat-icon>
-        <p>{{ boardConfig.selectedNames[3] }}</p>
+        <mat-icon>{{ boardConfig.detailIcon }}</mat-icon>
+        <p>{{ boardConfig.detailName }}</p>
       </div>
       <!-- Liste med key-values -->
       <mat-list>

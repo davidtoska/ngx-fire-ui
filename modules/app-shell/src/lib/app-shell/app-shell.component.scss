@@ -22,7 +22,7 @@ mat-toolbar {
   transition: all ease-in 0.15s;
 }
 
-.sidenav {
+mat-sidenav.sidenav {
   width: 256px;
   background-image: url('//www.gstatic.com/mobilesdk/190424_mobilesdk/nav_nachos@2x.png');
   background-repeat: no-repeat;
@@ -53,7 +53,7 @@ mat-toolbar {
   }
 }
 
-mat-nav-list {
+mat-sidenav mat-nav-list {
   display: flex;
   flex-direction: column;
   padding-top: 0;

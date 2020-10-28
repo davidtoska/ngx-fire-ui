@@ -1,11 +1,9 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-// Import component themes from shell
+// Dette skal importeres fra App shell styles.scss
 @import '../../../modules/components/src/lib/nested-menu/nested-menu.theme.scss';
 @import '../../../modules/components/src/lib/fullscreen-page/fullscreen-page.theme.scss';
-
-// Dette skal importeres fra App shell styles.scss
 $ngx-fire-ui-light: (
   json-editor-hover: map_get($mat-gray, 100),
 );
@@ -36,13 +34,9 @@ $ngx-fire-ui-dark: (
     ngx-fire-ui: $ngx-fire-ui-dark
   );
 }
-// Set theme colors here
+
 $example-app-primary: mat-palette($mat-light-blue, 600);
 $example-app-accent: mat-palette($mat-blue-gray, 50);
-
-// Custom styling map for shell components,
-// Used to make components look good in both light and dark themes
-
 $example-app-light-theme: mat-light-theme(
   (
     color: (
@@ -60,12 +54,6 @@ $example-app-dark-theme: mat-dark-theme(
   )
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-
-/* You can add global styles to this file, and also import other style files */
-
 html,
 body {
   height: 100%;
@@ -74,12 +62,14 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 
+  &:not(.dark-theme) {
+    @include angular-material-theme($example-app-light-theme);
+    @include nested-menu-theme($example-app-light-theme);
+    @include fullscreen-page-theme($example-app-light-theme);
+  }
   &.dark-theme {
     @include angular-material-theme($example-app-dark-theme);
     @include nested-menu-theme($example-app-dark-theme);
     @include fullscreen-page-theme($example-app-dark-theme);
   }
-  @include angular-material-theme($example-app-light-theme);
-  @include nested-menu-theme($example-app-light-theme);
-  @include fullscreen-page-theme($example-app-light-theme);
 }
